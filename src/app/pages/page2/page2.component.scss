@@ -1,0 +1,30 @@
+/* page2.component.scss */
+.page2-container {
+  padding: 20px;
+}
+
+h1 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.appointments-list {
+  margin-top: 20px;
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  th, td {
+    padding: 10px;
+    text-align: left;
+  }
+
+  th {
+    background-color: #f1f1f1;
+  }
+
+  td {
+    border-bottom: 1px solid #ddd;
+  }
+}

@@ -1,0 +1,121 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  font-family: "FONT NAME", Helvetica, sans-serif;
+  align-items: center;
+  padding: 0rem 1rem;
+  background-color: white;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  top: 0;
+  left: 250px;
+  right: 0;
+}
+
+.header__status {
+  flex: 1;
+  display: flex;
+  align-items: center;
+
+  h1 {
+    font-size: 1.4rem;
+    color: #333;
+    margin-left: 10px;
+    font-weight: normal;
+  }
+}
+
+.header__search {
+  display: flex;
+  align-items: center;
+  position: relative;
+
+  .header__search-input {
+    width: 300px; /* Ajustez cette valeur pour augmenter la largeur */
+    padding: 10px;
+    font-size: 16px; /* Ajustez la taille du texte si nécessaire */
+    border: 1px solid #ccc; /* Ajoutez un bord si nécessaire */
+    border-radius: 9px; /* Optionnel : pour des coins arrondis */
+    background-color: #f2f8fe;
+  }
+
+
+  .header__search-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+      width: 40px;
+      height: 40px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1); /* Légère agrandissement lors du survol */
+    }
+  }
+}
+
+.header__information {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+
+  button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+      width: 30px;
+      height: 30px;
+      transition: transform 0.2s ease;
+    }
+
+    &:hover img {
+      transform: scale(1.1);
+    }
+  }
+}
+
+.header__separator {
+  width: 1px;
+  height: 40px;
+  background-color: #eaebee;
+  margin: 0 10px;
+}
+
+.header__user {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  .header__user-button {
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+
+    img {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      transition: transform 0.2s ease;
+    }
+  }
+
+  .header__user-information {
+    display: flex;
+    flex-direction: column; /* Assure que les éléments sont empilés verticalement */
+    gap: 0px; /* Réduit l'espace entre les h3 et h4 */
+  }
+
+  h3, h4 {
+    margin: 0; /* Enlève les marges par défaut */
+    color: #333;
+    font-weight: normal;
+  }
+}

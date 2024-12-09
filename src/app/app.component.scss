@@ -1,0 +1,41 @@
+/* app.component.scss */
+
+/* Conteneur principal de l'application */
+.app-container {
+  display: flex;
+  height: 100vh; /* Prend toute la hauteur de la fenêtre */
+}
+
+/* La sidebar sur le côté gauche */
+app-sidebar {
+  width: 250px;
+  height: 100vh; /* Occupe toute la hauteur */
+  position: fixed; /* Fixe la sidebar sur le côté */
+  top: 0;
+  left: 0;
+  background-color: #f2f8fe
+}
+
+/* Le contenu principal (header + page content) */
+.main-content {
+  margin-left: 250px; /* Correspond à la largeur de la sidebar */
+  flex-grow: 1;
+  padding-top: 60px; /* Décale le contenu pour ne pas être caché par le header */
+}
+
+/* Le header en haut */
+.header {
+  background-color: #f2f8fe; /* Le fond du header */
+  position: fixed;
+  top: 0;
+  left: 250px; /* Décale le header à droite de la sidebar */
+  width: calc(100% - 250px); /* Prend toute la largeur sauf celle de la sidebar */
+  z-index: 10; /* S'assure que le header est au-dessus du contenu */
+}
+
+/* Page content sous le header */
+.page-content {
+  padding: 20px;
+  background-color: #ffffff;
+  min-height: 100vh; /* Occupe toute la hauteur de la fenêtre */
+}
