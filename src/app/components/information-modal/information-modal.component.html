@@ -1,0 +1,29 @@
+<div class="info-modal__overlay" (click)="onClose()">
+  <div class="info-modal__content" (click)="$event.stopPropagation()">
+    <span class="info-modal__close-btn" (click)="onClose()">&times;</span>
+
+    <h2>À propos de l'application Patient Management</h2>
+
+    <div class="info-modal__details">
+      <p>
+        <strong>Patient Management</strong> est une plateforme destinée aux professionnels de la santé.
+        Elle permet de gérer efficacement le suivi des patients grâce aux fonctionnalités suivantes :
+      </p>
+
+      <ul>
+        <li><strong>Gestion des Patients :</strong> Suivez les informations médicales, diagnostics et historiques de traitement.</li>
+        <li><strong>Planification des Rendez-vous :</strong> Organisez les rendez-vous et planifiez les visites médicales.</li>
+        <li><strong>Suivi Médical :</strong> Suivez l'évolution des traitements et l'état de santé des patients.</li>
+        <li><strong>Authentification Sécurisée :</strong> Garantissez un accès sécurisé aux informations sensibles.</li>
+        <li><strong>Rapports et Statistiques :</strong> Génération de rapports médicaux détaillés pour un suivi approfondi.</li>
+      </ul>
+
+      <p>
+        Cette application vise à faciliter la gestion des soins médicaux en centralisant toutes les informations nécessaires
+        et en optimisant le temps des professionnels de santé.
+      </p>
+    </div>
+
+    <button class="info-modal__ok-btn" (click)="onClose()">OK</button>
+  </div>
+</div>

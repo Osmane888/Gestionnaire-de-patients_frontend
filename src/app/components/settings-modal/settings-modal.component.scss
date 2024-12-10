@@ -1,0 +1,92 @@
+/* Overlay de la modale */
+.settings-modal__overlay {
+  display: block;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+}
+
+/* Contenu de la modale */
+.settings-modal__content {
+  background-color: white;
+  margin: 10% auto;
+  padding: 2rem;
+  width: 60%;
+  max-width: 600px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  animation: fadeIn 0.3s ease-in-out;
+  position: relative;
+  text-align: left;
+
+  /* Titre */
+  h2 {
+    text-align: center;
+    color: #1a237e;
+    margin-bottom: 1rem;
+  }
+
+  /* Détails de la modale */
+  .settings-modal__details {
+    font-size: 16px;
+    line-height: 1.6;
+
+    ul {
+      margin-top: 1rem;
+      list-style: disc inside;
+
+      li {
+        margin: 0.5rem 0;
+      }
+    }
+  }
+
+  /* Bouton de déconnexion */
+  .settings-modal__logout-btn {
+    background: #d32f2f;
+    color: white;
+    padding: 10px 20px;
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    display: block;
+    margin: 2rem auto 0;
+    text-align: center;
+
+    &:hover {
+      background: #f44336;
+    }
+  }
+
+  /* Bouton de fermeture */
+  .settings-modal__close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+
+    &:hover {
+      color: red;
+    }
+  }
+}
+
+/* Animation d'affichage */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

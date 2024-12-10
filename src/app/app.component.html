@@ -1,7 +1,6 @@
-<!-- app.component.html -->
 <div class="app-container">
   <!-- Sidebar -->
-  <app-sidebar></app-sidebar>
+  <app-sidebar (adminModalOpened)="openAdminModal()"></app-sidebar>
 
   <div class="main-content">
     <!-- Header -->
@@ -14,4 +13,10 @@
       <router-outlet></router-outlet>
     </div>
   </div>
+
+  <!-- Conditionnellement afficher la modale -->
+  <app-admin-modal
+    *ngIf="isModalOpen"
+    (closeModal)="closeAdminModal()">
+  </app-admin-modal>
 </div>

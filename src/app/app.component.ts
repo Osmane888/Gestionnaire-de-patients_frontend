@@ -6,5 +6,15 @@ import { Component } from '@angular/core';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'Gestionnaire-de-patients_frontend';
+  isModalOpen = false;
+
+  openAdminModal() {
+    console.log("Modale ouverte via AppComponent");
+    this.isModalOpen = true;
+  }
+
+  closeAdminModal() {
+    console.log("Modale fermée via AppComponent");
+    this.isModalOpen = false;
+  }
 }

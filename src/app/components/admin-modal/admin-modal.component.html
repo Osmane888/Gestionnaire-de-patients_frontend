@@ -1,0 +1,17 @@
+<div class="sidebar__modal--overlay" (click)="onClose()">
+  <div class="sidebar__modal--content" (click)="$event.stopPropagation()">
+    <span class="sidebar__modal-close-btn" (click)="onClose()">&times;</span>
+    <h2>Informations de Contact - Admin Support</h2>
+    <div class="sidebar__modal-info">
+      <p><strong>Nom :</strong> John Doe</p>
+      <p><strong>Téléphone :</strong> +33 6 12 34 56 78</p>
+      <p><strong>Email :</strong> admin&#64;gmail.com</p>
+      <p><strong>Disponibilité :</strong></p>
+      <ul>
+        <li>Lundi - Vendredi : 9h00 - 17h00</li>
+        <li>Samedi : 10h00 - 13h00</li>
+        <li><strong>Non disponible :</strong> Dimanche et jours fériés</li>
+      </ul>
+    </div>
+  </div>
+</div>
