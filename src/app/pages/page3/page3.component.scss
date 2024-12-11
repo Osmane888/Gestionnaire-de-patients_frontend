@@ -1,0 +1,86 @@
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  h2 {
+    font-size: 24px;
+    color: #333;
+  }
+
+  .add-consultation-btn {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:hover {
+      background-color: #1558c9;
+    }
+  }
+}
+
+.calendar {
+  display: flex;
+  flex-direction: row;
+
+  .calendar-grid {
+    display: grid;
+    grid-template-columns: 80px repeat(5, 1fr); /* Horaires + 5 jours */
+    grid-auto-rows: 50px;
+
+    .time-column .time-slot {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 14px;
+      color: #666;
+      border-bottom: 1px solid #ddd;
+    }
+
+    .days {
+      display: contents;
+
+      .day-header {
+        text-align: center;
+        font-weight: bold;
+        background-color: #f1f1f1;
+        border-bottom: 1px solid #ddd;
+      }
+
+      .day-cell {
+        border: 1px solid #ddd;
+        position: relative;
+        background-color: #f9f9f9;
+
+        &:hover {
+          background-color: #eaeaea;
+        }
+
+        .appointment {
+          background-color: #fce4ec;
+          color: #333;
+          padding: 5px;
+          border-radius: 4px;
+          font-size: 12px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+
+          .delete-btn {
+            background: none;
+            border: none;
+            color: red;
+            font-size: 12px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+  }
+}

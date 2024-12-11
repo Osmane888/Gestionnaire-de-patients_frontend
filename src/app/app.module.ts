@@ -25,6 +25,7 @@ import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { Page3Component } from './pages/page3/page3.component';
 import { LoginComponent } from './pages/login/login.component';
+import { CalendarModalComponent } from './modal/calendar-modal/calendar-modal.component';
 
 @NgModule({
   declarations: [
@@ -39,6 +40,7 @@ import { LoginComponent } from './pages/login/login.component';
     AddPatientModalComponent,
     Page3Component,
     LoginComponent,
+    CalendarModalComponent,
   ],
   imports: [
     BrowserModule,

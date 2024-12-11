@@ -1,0 +1,29 @@
+<div class="modal" *ngIf="isOpen">
+  <div class="modal-content">
+    <h2>Ajouter une consultation</h2>
+    <label>
+      Nom du patient :
+      <input [(ngModel)]="patientName" type="text" required />
+    </label>
+    <label>
+      Jour :
+      <select [(ngModel)]="selectedDay">
+        <option *ngFor="let day of ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi']" [value]="day">
+          {{ day }}
+        </option>
+      </select>
+    </label>
+    <label>
+      Heure :
+      <select [(ngModel)]="selectedTime">
+        <option *ngFor="let time of ['09:00 am', '10:00 am', '11:00 am', '12:00 pm', '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm', '05:00 pm']" [value]="time">
+          {{ time }}
+        </option>
+      </select>
+    </label>
+    <div class="modal-actions">
+      <button (click)="addAppointment()">Ajouter</button>
+      <button (click)="closeModal()">Annuler</button>
+    </div>
+  </div>
+</div>

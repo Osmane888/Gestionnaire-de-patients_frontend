@@ -1,1 +1,36 @@
-<p>page3 works!</p>
+<div class="calendar-header">
+  <h2>Calendrier des consultations</h2>
+  <button class="add-consultation-btn" (click)="openModal()">+ Add Consultation</button>
+</div>
+
+<div class="calendar">
+  <div class="calendar-grid">
+    <!-- Horaires -->
+    <div class="time-column">
+      <div *ngFor="let time of timeSlots" class="time-slot">{{ time }}</div>
+    </div>
+
+    <!-- Jours -->
+    <div class="days">
+      <div class="day-header" *ngFor="let day of days">{{ day }}</div>
+      <div
+        class="day-cell"
+        *ngFor="let cell of calendarCells; let i = index"
+        (click)="editCell(i)"
+      >
+        <div *ngIf="appointments[i]" class="appointment">
+          {{ appointments[i]?.patientName }}
+          <button class="delete-btn" (click)="deleteAppointment(i, $event)">✖</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal Component -->
+<!-- Modal Component -->
+<app-calendar-modal
+  #calendarModal
+  (appointmentAdded)="addAppointment($event)"
+></app-calendar-modal>
+
