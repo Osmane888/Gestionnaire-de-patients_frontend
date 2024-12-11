@@ -1,7 +1,7 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
-import {PatientsBasicInfos} from '../models/patients.infos';
+import {Patient} from '../models/patients.infos';
 
 @Injectable({
   providedIn: 'root'
@@ -9,10 +9,10 @@ import {PatientsBasicInfos} from '../models/patients.infos';
 export class PatientService{
 
   constructor(
-    private _htpp: HttpClient,
+    private _http: HttpClient,
   ) {}
 
-  getAllPatients(url: string): Observable<PatientsBasicInfos> {
-    return this._htpp.get<PatientsBasicInfos>(url);
+  getAllPatients(url: string): Observable<Patient> {
+    return this._http.get<Patient>(url);
   }
 }

@@ -1,10 +1,12 @@
-export interface PatientsBasicInfos {
-  any:[
-    id: string,
-    lastname: string,
-    firstname: string,
-    email?: string,
-    phoneNumber?: string
-    ]
+export interface Patient {
+  infos: [
+    {
+      id: string,
+      lastname: string,
+      firstname: string,
+      email?: string,
+      phoneNumber?: string
+    }
+  ]
 }
 

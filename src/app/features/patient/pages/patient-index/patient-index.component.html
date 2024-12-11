@@ -1,7 +1,4 @@
-<ul>
-  <li>{{patientBasicInfos.id}}</li>
-  <li>{{patientBasicInfos.firstname}}</li>
-  <li>{{patientBasicInfos.lastname}}</li>
-  <li>{{patientBasicInfos.email}}</li>
-  <li>{{patientBasicInfos.phoneNumber}}</li>
-</ul>
+<h1>Hello world</h1>
+    <ul *ngFor="let infos of patient.infos">
+      <li>{{infos.firstname}}</li>
+    </ul>
