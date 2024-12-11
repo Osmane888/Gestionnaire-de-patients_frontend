@@ -1,14 +1,16 @@
 <!-- Bouton pour ouvrir la modal -->
-<div class="button-container">
-  <button class="add-patient-btn" (click)="addPatientModal.openModal()">
-    <i class="add-patient-btn__icon">+</i>
-    Add Patient
-  </button>
-</div>
-
-<div class="patient-header">
-  <h1>Patients</h1>
-  <p>{{ totalPatients }} total patient{{ totalPatients > 1 ? 's' : '' }}</p>
+<div class="disposition" >
+  <div class="patient-header">
+    <img class="patient-icon" src="logo/person.png" alt="Patients Icon">
+    <h2>{{ totalPatients }}</h2>
+    <p>Total Patient{{ totalPatients > 1 ? 's' : '' }}</p>
+  </div>
+  <div class="button-container">
+    <button class="add-patient-btn" (click)="addPatientModal.openModal()">
+      <i class="add-patient-btn__icon">+</i>
+      Add Patient
+    </button>
+  </div>
 </div>
 
 

@@ -1,0 +1,35 @@
+<div class="modal" [class.modal--active]="isModalOpen">
+  <div class="modal__content">
+    <h2>Add a new patient</h2>
+    <form (ngSubmit)="addPatient()">
+      <label>
+        Name:
+        <input type="text" [(ngModel)]="newPatient.name" name="name" required />
+      </label>
+      <label>
+        Phone:
+        <input type="text" [(ngModel)]="newPatient.phone" name="phone" required />
+      </label>
+      <label>
+        Email:
+        <input type="email" [(ngModel)]="newPatient.email" name="email" required />
+      </label>
+      <label>
+        Address:
+        <input type="text" [(ngModel)]="newPatient.address" name="address" required />
+      </label>
+      <label>
+        Registered:
+        <input type="date" [(ngModel)]="newPatient.registered" name="registered" required />
+      </label>
+      <label>
+        Last Treatment:
+        <input type="date" [(ngModel)]="newPatient.lastTreatment" name="lastTreatment" />
+      </label>
+      <div class="modal__actions">
+        <button type="submit">Add</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
+      </div>
+    </form>
+  </div>
+</div>

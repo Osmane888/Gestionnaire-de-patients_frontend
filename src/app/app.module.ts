@@ -10,10 +10,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { Page1Component } from './pages/page1/page1.component';
 import { Page2Component } from './pages/page2/page2.component';
-import { AdminModalComponent } from './components/admin-modal/admin-modal.component';
-import { InformationModalComponent } from './components/information-modal/information-modal.component';
-import { SettingsModalComponent } from './components/settings-modal/settings-modal.component';
-import { AddPatientModalComponent } from './components/add-patient-modal/add-patient-modal.component';
+import { AdminModalComponent } from './modal/admin-modal/admin-modal.component';
+import { InformationModalComponent } from './modal/information-modal/information-modal.component';
+import { SettingsModalComponent } from './modal/settings-modal/settings-modal.component';
+import { AddPatientModalComponent } from './modal/add-patient-modal/add-patient-modal.component';
 
 // PrimeNG
 import { DialogModule } from 'primeng/dialog';
@@ -23,6 +23,8 @@ import { TableModule } from 'primeng/table';
 import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
+import { Page3Component } from './pages/page3/page3.component';
+import { LoginComponent } from './pages/login/login.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +37,8 @@ import { MessageModule } from 'primeng/message';
     InformationModalComponent,
     SettingsModalComponent,
     AddPatientModalComponent,
+    Page3Component,
+    LoginComponent,
   ],
   imports: [
     BrowserModule,

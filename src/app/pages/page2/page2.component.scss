@@ -1,30 +1,102 @@
-/* page2.component.scss */
-.page2-container {
-  padding: 20px;
-}
+.staff-content{
+  font-family : "FONT NAME", Helvetica, sans-serif;
+  padding-left:25px;
 
-h1 {
-  font-size: 2rem;
-  margin-bottom: 20px;
-}
+  .staff-header {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
 
-.appointments-list {
-  margin-top: 20px;
-  table {
-    width: 100%;
-    border-collapse: collapse;
+    img{
+      width: 2.5rem;
+      height: auto;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #405ae7;
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+      font-weight: bold;
+      margin-bottom: 11px;
+    }
   }
 
-  th, td {
-    padding: 10px;
-    text-align: left;
+  .staff-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
   }
 
-  th {
-    background-color: #f1f1f1;
-  }
+  .staff-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 250px;
+    background-color: #f2f8fe;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
 
-  td {
-    border-bottom: 1px solid #ddd;
+    &:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+
+    .staff-icon {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 15px;
+
+      img {
+        width: 100%;
+        height: auto;
+        border-radius: 50%;
+      }
+    }
+
+    .staff-info {
+      text-align: center;
+      margin-bottom: 15px;
+
+      h3 {
+        font-size: 18px;
+        color: #333;
+        margin: 5px 0;
+      }
+
+      p {
+        font-size: 14px;
+        color: #666;
+        margin: 5px 0;
+      }
+    }
+
+    .delete-btn {
+      padding: 10px 15px;
+      font-size: 14px;
+      color: white;
+      background-color: #e74c3c;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.2s ease;
+
+      &:hover {
+        background-color: #c0392b;
+      }
+
+      &:active {
+        background-color: #a93226;
+      }
+    }
   }
 }

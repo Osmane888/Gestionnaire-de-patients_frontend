@@ -1,33 +1,21 @@
-<!-- page2.component.html -->
-<div class="page2-container">
-  <h1>Historique des Rendez-vous</h1>
+<div class="staff-content" >
+  <div class="staff-header">
+    <img src="logo/staff.png" alt="Staff Icon">
+    <h2>{{ totalStaff }}</h2>
+    <p>Total Staff</p>
+  </div>
 
-  <div class="appointments-list">
-    <h2>Liste des Rendez-vous</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>Patient</th>
-        <th>Date</th>
-        <th>Heure</th>
-        <th>Statut</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>Jean Dupont</td>
-        <td>01/12/2024</td>
-        <td>10:30</td>
-        <td>Confirmé</td>
-      </tr>
-      <tr>
-        <td>Marie Martin</td>
-        <td>02/12/2024</td>
-        <td>14:00</td>
-        <td>En attente</td>
-      </tr>
-      <!-- Ajoute plus de lignes selon besoin -->
-      </tbody>
-    </table>
+  <div class="staff-container">
+    <div class="staff-card" *ngFor="let staff of staffMembers">
+      <div class="staff-icon">
+        <img src="logo/user-logo.png" alt="User Icon" />
+      </div>
+      <div class="staff-info">
+        <h3>{{ staff.name }}</h3>
+        <p>{{ staff.email }}</p>
+        <p>{{ staff.role }}</p>
+      </div>
+      <button class="delete-btn" (click)="deleteStaff(staff.id)">Supprimer utilisateur</button>
+    </div>
   </div>
 </div>
