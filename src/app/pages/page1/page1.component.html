@@ -1,33 +1,44 @@
-<!-- page1.component.html -->
-<div class="page1-container">
-  <h1>Gestion des Patients</h1>
-
-  <div class="patients-list">
-    <h2>Liste des Patients</h2>
-    <table>
-      <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Âge</th>
-        <th>Actions</th>
-      </tr>
-      </thead>
-      <tbody>
-      <tr>
-        <td>001</td>
-        <td>Jean Dupont</td>
-        <td>45</td>
-        <td><button>Voir</button></td>
-      </tr>
-      <tr>
-        <td>002</td>
-        <td>Marie Martin</td>
-        <td>32</td>
-        <td><button>Voir</button></td>
-      </tr>
-      <!-- Ajoute plus de lignes selon besoin -->
-      </tbody>
-    </table>
-  </div>
+<!-- Bouton pour ouvrir la modal -->
+<div class="button-container">
+  <button class="add-patient-btn" (click)="addPatientModal.openModal()">
+    <i class="add-patient-btn__icon">+</i>
+    Add Patient
+  </button>
 </div>
+
+<div class="patient-header">
+  <h1>Patients</h1>
+  <p>{{ totalPatients }} total patient{{ totalPatients > 1 ? 's' : '' }}</p>
+</div>
+
+
+<div class="table">
+  <div class="table__header">
+    <div class="table__row">
+      <div class="table__cell table__cell--header">Patient name</div>
+      <div class="table__cell table__cell--header">Phone</div>
+      <div class="table__cell table__cell--header">Email</div>
+      <div class="table__cell table__cell--header">Address</div>
+      <div class="table__cell table__cell--header">Registered</div>
+      <div class="table__cell table__cell--header">Last treatment</div>
+    </div>
+  </div>
+  <div class="table__body-wrapper">
+      <div class="table__body">
+        <div class="table__row" *ngFor="let patient of patients">
+          <div class="table__cell table__cell--data">{{ patient.name }}</div>
+          <div class="table__cell table__cell--data">{{ patient.phone }}</div>
+          <div class="table__cell table__cell--data">{{ patient.email }}</div>
+          <div class="table__cell table__cell--data">{{ patient.address }}</div>
+          <div class="table__cell table__cell--data">{{ patient.registered }}</div>
+          <div class="table__cell table__cell--data">{{ patient.lastTreatment }}</div>
+        </div>
+      </div>
+    </div>
+</div>
+
+<!-- Composant modal -->
+<app-add-patient-modal
+  #addPatientModal
+  (patientAdded)="addPatient($event)">
+</app-add-patient-modal>

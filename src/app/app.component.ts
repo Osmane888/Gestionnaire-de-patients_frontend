@@ -17,4 +17,6 @@ export class AppComponent {
     console.log("Modale fermée via AppComponent");
     this.isModalOpen = false;
   }
+
+
 }
