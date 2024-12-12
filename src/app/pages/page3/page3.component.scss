@@ -3,84 +3,99 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+}
 
-  h2 {
-    font-size: 24px;
-    color: #333;
-  }
+.calendar-header h2 {
+  font-size: 24px;
+  color: #333;
+}
 
-  .add-consultation-btn {
-    background-color: #1a73e8;
-    color: white;
-    border: none;
-    border-radius: 8px;
-    padding: 10px 20px;
-    font-size: 14px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+.add-consultation-btn {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
 
-    &:hover {
-      background-color: #1558c9;
-    }
-  }
+.add-consultation-btn:hover {
+  background-color: #0056b3;
 }
 
 .calendar {
   display: flex;
-  flex-direction: row;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
 
-  .calendar-grid {
-    display: grid;
-    grid-template-columns: 80px repeat(5, 1fr); /* Horaires + 5 jours */
-    grid-auto-rows: 50px;
+.time-column {
+  width: 100px;
+  background-color: #f8f9fa;
+  border-right: 1px solid #ddd;
+}
 
-    .time-column .time-slot {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 14px;
-      color: #666;
-      border-bottom: 1px solid #ddd;
-    }
+.time-slot {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  color: #555;
+}
 
-    .days {
-      display: contents;
+.days {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-auto-rows: 60px;
+}
 
-      .day-header {
-        text-align: center;
-        font-weight: bold;
-        background-color: #f1f1f1;
-        border-bottom: 1px solid #ddd;
-      }
+.day-header {
+  background-color: #f1f1f1;
+  text-align: center;
+  font-weight: bold;
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
 
-      .day-cell {
-        border: 1px solid #ddd;
-        position: relative;
-        background-color: #f9f9f9;
+.day-cell {
+  position: relative;
+  border: 1px solid #ddd;
+  background-color: #fff;
+  cursor: pointer;
+}
 
-        &:hover {
-          background-color: #eaeaea;
-        }
+.day-cell:hover {
+  background-color: #f9f9f9;
+}
 
-        .appointment {
-          background-color: #fce4ec;
-          color: #333;
-          padding: 5px;
-          border-radius: 4px;
-          font-size: 12px;
-          display: flex;
-          justify-content: space-between;
-          align-items: center;
+.appointment {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  right: 10px;
+  background-color: #ffecec;
+  padding: 5px 10px;
+  border: 1px solid #ff6b6b;
+  border-radius: 5px;
+  color: #333;
+  font-size: 14px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
 
-          .delete-btn {
-            background: none;
-            border: none;
-            color: red;
-            font-size: 12px;
-            cursor: pointer;
-          }
-        }
-      }
-    }
-  }
+.delete-btn {
+  background: none;
+  border: none;
+  color: #ff6b6b;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.delete-btn:hover {
+  color: #ff3b3b;
 }

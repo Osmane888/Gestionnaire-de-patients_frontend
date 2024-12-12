@@ -34,13 +34,11 @@
   </div>
 </header>
 
-<!-- Affichage conditionnel de la modale -->
 <app-information-modal
   *ngIf="isInfoModalOpen"
   (closeModal)="closeInfoModal()">
 </app-information-modal>
 
-<!-- Modale des Paramètres -->
 <app-settings-modal
   *ngIf="isSettingsModalOpen"
   (closeModal)="closeSettingsModal()"
