@@ -15,6 +15,7 @@ export class AddPatientModalComponent {
     phone: '',
     email: '',
     address: '',
+    mutuel: '',
     registered: '',
     lastTreatment: ''
   };
@@ -39,6 +40,7 @@ export class AddPatientModalComponent {
       phone: '',
       email: '',
       address: '',
+      mutuel: '',
       registered: '',
       lastTreatment: ''
     };

@@ -1,0 +1,38 @@
+<div *ngIf="patient" class="patient-details">
+  <h2>{{ patient.name }}</h2>
+  <p><strong>Phone:</strong> {{ patient.phone }}</p>
+  <p><strong>Email:</strong> {{ patient.email }}</p>
+  <p><strong>Address:</strong> {{ patient.address }}</p>
+  <p><strong>Mutuel:</strong> {{ patient.mutuel }}</p>
+  <p><strong>Registered:</strong> {{ patient.registered }}</p>
+  <p><strong>Last Treatment:</strong> {{ patient.lastTreatment }}</p>
+
+  <button (click)="enableEdit()">Edit</button>
+
+  <!-- Formulaire d'édition -->
+  <form *ngIf="isEditing" (ngSubmit)="confirmUpdatePatient()">
+    <label>
+      Phone:
+      <input type="text" [(ngModel)]="patient.phone" name="phone" required />
+    </label>
+    <label>
+      Email:
+      <input type="email" [(ngModel)]="patient.email" name="email" required />
+    </label>
+    <label>
+      Address:
+      <input type="text" [(ngModel)]="patient.address" name="address" required />
+    </label>
+    <label>
+      Mutuel:
+      <input type="text" [(ngModel)]="patient.mutuel" name="mutuel" required />
+    </label>
+    <label>
+      Last Treatment:
+      <input type="date" [(ngModel)]="patient.lastTreatment" name="lastTreatment" required />
+    </label>
+
+    <button type="submit">Save</button>
+    <button type="button" (click)="cancelEdit()">Cancel</button>
+  </form>
+</div>

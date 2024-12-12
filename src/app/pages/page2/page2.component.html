@@ -1,4 +1,4 @@
-<div class="staff-content" >
+<div class="staff-content">
   <div class="staff-header">
     <img src="logo/staff.png" alt="Staff Icon">
     <h2>{{ totalStaff }}</h2>
@@ -15,7 +15,18 @@
         <p>{{ staff.email }}</p>
         <p>{{ staff.role }}</p>
       </div>
-      <button class="delete-btn" (click)="deleteStaff(staff.id)">Supprimer utilisateur</button>
+      <button class="delete-btn" (click)="confirmDelete(staff)">Supprimer utilisateur</button>
+    </div>
+  </div>
+
+  <!-- Confirmation Modal -->
+  <div *ngIf="selectedStaff" class="confirmation-modal">
+    <div class="modal-content">
+      <h3>Êtes-vous sûr de vouloir supprimer {{ selectedStaff.name }} ?</h3>
+      <div class="modal-actions">
+        <button class="confirm-btn" (click)="deleteStaff(selectedStaff.id)">Oui</button>
+        <button class="cancel-btn" (click)="cancelDelete()">Non</button>
+      </div>
     </div>
   </div>
 </div>

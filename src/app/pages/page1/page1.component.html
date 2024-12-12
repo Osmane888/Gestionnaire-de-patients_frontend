@@ -23,6 +23,7 @@
       <div class="table__cell table__cell--header">Address</div>
       <div class="table__cell table__cell--header">Registered</div>
       <div class="table__cell table__cell--header">Last treatment</div>
+      <div class="table__cell table__cell--header">Action</div>
     </div>
   </div>
   <div class="table__body-wrapper">
@@ -34,6 +35,11 @@
           <div class="table__cell table__cell--data">{{ patient.address }}</div>
           <div class="table__cell table__cell--data">{{ patient.registered }}</div>
           <div class="table__cell table__cell--data">{{ patient.lastTreatment }}</div>
+          <div class="table__cell table__cell--data">
+          <a [routerLink]="['/pageDetails', patient.name]" class="detail-icon" >
+            <img class="details-icon" src="logo/edit-white.png" alt="Details Icon">
+          </a>
+          </div>
         </div>
       </div>
     </div>

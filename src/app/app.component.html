@@ -1,4 +1,5 @@
-<div class="app-container">
+<!-- Structure conditionnelle -->
+<div *ngIf="!isLoginPage; else loginTemplate" class="app-container">
   <!-- Sidebar -->
   <app-sidebar (adminModalOpened)="openAdminModal()"></app-sidebar>
 
@@ -8,15 +9,17 @@
       <app-header></app-header>
     </div>
 
-    <!-- Page content avec router-outlet -->
+    <!-- Page content -->
     <div class="page-content">
       <router-outlet></router-outlet>
     </div>
   </div>
 
-  <!-- Conditionnellement afficher la modale -->
-  <app-admin-modal
-    *ngIf="isModalOpen"
-    (closeModal)="closeAdminModal()">
-  </app-admin-modal>
+  <!-- Admin Modal -->
+  <app-admin-modal *ngIf="isModalOpen" (closeModal)="closeAdminModal()"></app-admin-modal>
 </div>
+
+<!-- Template pour la page login -->
+<ng-template #loginTemplate>
+  <router-outlet></router-outlet>
+</ng-template>

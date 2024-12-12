@@ -1,6 +1,6 @@
-.staff-content{
-  font-family : "FONT NAME", Helvetica, sans-serif;
-  padding-left:25px;
+.staff-content {
+  font-family: "FONT NAME", Helvetica, sans-serif;
+  padding-left: 25px;
 
   .staff-header {
     display: flex;
@@ -8,7 +8,7 @@
     gap: 10px;
     margin-bottom: 20px;
 
-    img{
+    img {
       width: 2.5rem;
       height: auto;
     }
@@ -23,7 +23,7 @@
       font-size: 16px;
       color: #666;
       font-weight: bold;
-      margin-bottom: 11px;
+      margin-top: 5px;
     }
   }
 
@@ -32,70 +32,136 @@
     flex-wrap: wrap;
     gap: 20px;
     justify-content: flex-start;
-  }
 
-  .staff-card {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    width: 250px;
-    background-color: #f2f8fe;
-    border: 1px solid #ddd;
-    border-radius: 8px;
-    padding: 20px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: transform 0.2s ease, box-shadow 0.2s ease;
-
-    &:hover {
-      transform: scale(1.05);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-    }
-
-    .staff-icon {
-      width: 80px;
-      height: 80px;
-      margin-bottom: 15px;
-
-      img {
-        width: 100%;
-        height: auto;
-        border-radius: 50%;
-      }
-    }
-
-    .staff-info {
-      text-align: center;
-      margin-bottom: 15px;
-
-      h3 {
-        font-size: 18px;
-        color: #333;
-        margin: 5px 0;
-      }
-
-      p {
-        font-size: 14px;
-        color: #666;
-        margin: 5px 0;
-      }
-    }
-
-    .delete-btn {
-      padding: 10px 15px;
-      font-size: 14px;
-      color: white;
-      background-color: #e74c3c;
-      border: none;
+    .staff-card {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      width: 250px;
+      background-color: #f2f8fe;
+      border: 1px solid #ddd;
       border-radius: 8px;
-      cursor: pointer;
-      transition: background-color 0.2s ease;
+      padding: 20px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
 
       &:hover {
-        background-color: #c0392b;
+        transform: scale(1.05);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
       }
 
-      &:active {
-        background-color: #a93226;
+      .staff-icon {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 15px;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 50%;
+        }
+      }
+
+      .staff-info {
+        text-align: center;
+        margin-bottom: 15px;
+
+        h3 {
+          font-size: 18px;
+          color: #333;
+          margin: 5px 0;
+        }
+
+        p {
+          font-size: 14px;
+          color: #666;
+          margin: 5px 0;
+        }
+      }
+
+      .delete-btn {
+        padding: 10px 15px;
+        font-size: 14px;
+        color: white;
+        background-color: #e74c3c;
+        border: none;
+        border-radius: 8px;
+        cursor: pointer;
+        transition: background-color 0.2s ease;
+
+        &:hover {
+          background-color: #c0392b;
+        }
+
+        &:active {
+          background-color: #a93226;
+        }
+      }
+    }
+  }
+}
+
+// Modal SCSS
+.confirmation-modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+
+  .modal-content {
+    background: white;
+    padding: 2rem;
+    border-radius: 8px;
+    text-align: center;
+    max-width: 400px;
+    width: 90%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+
+    h3 {
+      margin-bottom: 1.5rem;
+      font-size: 18px;
+      color: #333;
+    }
+
+    .modal-actions {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1rem;
+
+      .confirm-btn {
+        font-size:18px;
+        background: #f44336;
+        color: white;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background: #d32f2f;
+        }
+      }
+
+      .cancel-btn {
+        font-size:18px;
+        background: #1a88e7;
+        color: black;
+        padding: 0.8rem 1.5rem;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+
+        &:hover {
+          background: #1a88e7;
+        }
       }
     }
   }

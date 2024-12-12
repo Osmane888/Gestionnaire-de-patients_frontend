@@ -33,6 +33,5 @@ export class HeaderComponent {
   handleLogout() {
     console.log("Déconnexion réussie !");
     this.isSettingsModalOpen = false;
-    // Ajoutez ici votre logique de déconnexion
   }
 }

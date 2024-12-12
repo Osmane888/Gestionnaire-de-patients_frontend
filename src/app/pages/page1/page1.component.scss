@@ -34,7 +34,7 @@
       font-size: 16px;
       color: #666;
       font-weight: bold;
-      margin-bottom: 11px;
+      margin-top: 5px;
     }
   }
 
@@ -100,7 +100,19 @@
   &__row {
     display: flex;
     transition: background-color 0.3s;
+  }
 
+  .details-icon {
+    padding:0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .details-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
   }
 
   &__cell {
