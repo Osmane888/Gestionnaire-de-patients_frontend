@@ -1,4 +1,10 @@
-<h1>Hello world</h1>
-    <ul *ngFor="let infos of patient.infos">
-      <li>{{infos.firstname}}</li>
-    </ul>
+<h1>Liste des patients</h1>
+<div>
+  <ul *ngFor="let infos of infoBasicPatients">
+    <li>{{infos.firstname}}</li>
+    <li>{{infos.lastname}}</li>
+    <button class="blue">
+      <a [routerLink]="'/' + infos.id">Infos</a>
+    </button>
+  </ul>
+</div>

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import {PatientService} from '../../services/patientService';
-import {Patient} from '../../models/patients.infos';
+import {BasicInfosPatient} from '../../models/patients.BasicInfos';
+import {PatientsTotalInfos} from '../../models/patients.TotalInfos';
 
 @Component({
   selector: 'app-patient-index',
@@ -9,7 +10,8 @@ import {Patient} from '../../models/patients.infos';
 })
 export class PatientIndexComponent {
 
-  patient!: Patient;
+  infoBasicPatients?: BasicInfosPatient[];
+
 
   constructor(
     public _patientService: PatientService
@@ -20,8 +22,8 @@ export class PatientIndexComponent {
   getPatients(url: string): void {
     this._patientService.getAllPatients(url).subscribe(
       {
-        next: (result: Patient) => {
-          this.patient = result;
+        next: (result) => {
+          this.infoBasicPatients = result;
         },
         error: (error) => {
           console.log(error);
