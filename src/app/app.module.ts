@@ -27,6 +27,8 @@ import { Page3Component } from './pages/page3/page3.component';
 import { LoginComponent } from './pages/login/login.component';
 import { CalendarModalComponent } from './modal/calendar-modal/calendar-modal.component';
 import { PagePatientDetailsComponent } from './pages/page-patient-details/page-patient-details.component';
+import {SharedModule} from './shared/shared.module';
+import {provideHttpClient} from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -59,8 +61,11 @@ import { PagePatientDetailsComponent } from './pages/page-patient-details/page-p
     ToastModule,
     MessagesModule,
     MessageModule,
+    SharedModule
   ],
-  providers: [],
+  providers: [
+    provideHttpClient(),
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule { }

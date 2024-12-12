@@ -1,0 +1,12 @@
+@if (infosTotalPatients){
+<h2>Infos complètes patient</h2>
+<h3>Nom : {{infosTotalPatients.firstname}}</h3>
+<h3>Prénom : {{infosTotalPatients.lastname}}</h3>
+<p>Date de naissance : {{infosTotalPatients.birthdate}}</p>
+<p>Email : {{infosTotalPatients.email}}</p>
+<p>Adresse : {{infosTotalPatients.address}}</p>
+<p>Mutuelle : {{infosTotalPatients.mutuelle}}</p>
+<p>Numéro de tel : {{infosTotalPatients.phoneNumber}}</p>
+<p>Info supp : {{infosTotalPatients.info_supplement}}</p>
+<button><a routerLink="/index">Retour</a></button>
+}
