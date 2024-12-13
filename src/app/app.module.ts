@@ -31,41 +31,44 @@ import {SharedModule} from './shared/shared.module';
 import {provideHttpClient} from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    SidebarComponent,
-    Page1Component,
-    Page2Component,
-    AdminModalComponent,
-    InformationModalComponent,
-    SettingsModalComponent,
-    AddPatientModalComponent,
-    Page3Component,
-    LoginComponent,
-    CalendarModalComponent,
-    PagePatientDetailsComponent,
-  ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
+    declarations: [
+        AppComponent,
+        HeaderComponent,
+        SidebarComponent,
+        Page1Component,
+        Page2Component,
+        AdminModalComponent,
+        InformationModalComponent,
+        SettingsModalComponent,
+        AddPatientModalComponent,
+        Page3Component,
+        LoginComponent,
+        CalendarModalComponent,
+        PagePatientDetailsComponent,
+    ],
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
 
-    // PrimeNG Modules
-    DialogModule,
-    ButtonModule,
-    InputTextModule,
-    TableModule,
-    ToastModule,
-    MessagesModule,
-    MessageModule,
-    SharedModule
-  ],
-  providers: [
-    provideHttpClient(),
-  ],
-  bootstrap: [AppComponent],
+        // PrimeNG Modules
+        DialogModule,
+        ButtonModule,
+        InputTextModule,
+        TableModule,
+        ToastModule,
+        MessagesModule,
+        MessageModule,
+        SharedModule
+    ],
+    providers: [
+        provideHttpClient(),
+    ],
+    bootstrap: [AppComponent],
+    exports: [
+        AddPatientModalComponent
+    ]
 })
 export class AppModule { }

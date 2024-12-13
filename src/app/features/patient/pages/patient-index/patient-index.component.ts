@@ -10,7 +10,7 @@ import {PatientsTotalInfos} from '../../models/patients.TotalInfos';
 })
 export class PatientIndexComponent {
 
-  infoBasicPatients?: BasicInfosPatient[];
+  infoBasicPatients!: BasicInfosPatient[];
 
 
   constructor(
@@ -30,5 +30,18 @@ export class PatientIndexComponent {
         }
       }
     );
+  }
+
+  openModal(addPatientModal: any) {
+    addPatientModal.openModal();
+  }
+
+  addPatient(patient: BasicInfosPatient) {
+    this.infoBasicPatients.push(patient);
+  }
+
+  // Propriété calculée
+  get totalPatients(): number {
+    return this.infoBasicPatients.length; // Retourne le nombre de patients
   }
 }

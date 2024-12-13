@@ -1,0 +1,140 @@
+.button-container {
+  display: flex;
+  justify-content: flex-end;
+  padding-right: 20px;
+  margin-bottom: 20px;
+}
+
+.disposition{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+
+  .patient-header {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 10px;
+    margin-bottom: 20px;
+    margin-left: 20px;
+
+    .patient-icon {
+      width: 2.5rem;
+      height: auto;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #405ae7;
+      margin: 0;
+    }
+
+    p {
+      font-size: 16px;
+      color: #666;
+      font-weight: bold;
+      margin-top: 5px;
+    }
+  }
+
+  .add-patient-btn {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 10px 20px;
+    font-size: 16px;
+    font-weight: bold;
+    color: white;
+    background-color: #405ae7;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    &:hover {
+      background-color: #3448c5;
+      transform: scale(1.05);
+    }
+
+    &:active {
+      background-color: #2d3ea6;
+      transform: scale(1);
+    }
+
+    /* Style pour l'icône "+" */
+    &__icon {
+      font-size: 18px;
+      font-weight: bold;
+      margin-right: 10px;
+    }
+  }
+}
+
+.table {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  overflow: hidden;
+  font-family: "FONT NAME", Helvetica, sans-serif;
+  margin: 20px;
+
+
+  &__header {
+    background-color: #f9fafb;
+    font-weight: bold;
+  }
+
+  &__body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__body-wrapper {
+    max-height: 550px;
+    overflow-y: auto;
+  }
+
+  &__row {
+    display: flex;
+    transition: background-color 0.3s;
+  }
+
+  .details-icon {
+    padding:0;
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+    transition: transform 0.2s ease, opacity 0.2s ease;
+  }
+
+  .details-icon:hover {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
+
+  &__cell {
+    flex: 1;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    text-align: left;
+
+    &--header {
+      font-weight: bold;
+      text-transform: uppercase;
+    }
+
+    &--data {
+      background-color: #1a88e7;
+      color: white;
+      padding:20px;
+    }
+
+  }
+}
+
+
+
+

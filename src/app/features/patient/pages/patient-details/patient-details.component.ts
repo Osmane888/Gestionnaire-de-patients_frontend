@@ -11,6 +11,7 @@ import {ActivatedRoute} from '@angular/router';
 export class PatientDetailsComponent {
 
   infosTotalPatients!: PatientsTotalInfos;
+  isEditing = false;
 
 
   constructor(
@@ -29,4 +30,34 @@ export class PatientDetailsComponent {
           }
         })
   }
+  //
+  // ngOnInit() {
+  //   const name = this._ar.snapshot.paramMap.get('id');
+  //   this.infosTotalPatients = this.infosTotalPatients.find((UUID) => p.name === name);
+  // }
+  //
+  // enableEdit() {
+  //   this.isEditing = true;
+  // }
+  //
+  // cancelEdit() {
+  //   this.isEditing = false;
+  // }
+  //
+  // confirmUpdatePatient() {
+  //   if (confirm('Are you sure you want to save the changes?')) {
+  //     this.updatePatient();
+  //   }
+  // }
+
+  // updatePatient() {
+  //   const index = this.patients.findIndex((p) => p.name === this.patient.name);
+  //   if (index !== -1) {
+  //     this.patients[index] = { ...this.patient };
+  //   }
+  //   this.isEditing = false;
+  //
+  //   // Optionnel : Redirection vers la liste principale
+  //   this.router.navigate(['/']);
+  // }
 }
