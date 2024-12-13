@@ -1,0 +1,29 @@
+@if (control && errors && !control.untouched) {
+  @if (errors['required']) {
+    <span class="error">Champs requis</span>
+  }
+  @if (errors['minlength']) {
+    <span class="error">Minimum {{ errors['minlength'].requiredLength }} élements</span>
+  }
+  @if (errors['maxlength']) {
+    <span class="error">Minimum {{ errors['maxlength'].requiredLength }} élements</span>
+  }
+  @if (errors['min']) {
+    <span class="error">Minimum {{ errors['min'].min }}</span>
+  }
+  @if (errors['max']) {
+    <span class="error">Minimum {{ errors['max'].max }}</span>
+  }
+  @if (errors['email']) {
+    <span class="error">Email non valid</span>
+  }
+  @if (errors['beforeToday']) {
+    <span class="error">La date doit être dans le passé</span>
+  }
+  @if (errors['samePassword']) {
+    <span class="error">Les mots de passes doivent être identiques</span>
+  }
+  @if (errors['afterOneWeek']) {
+    <span class="error">La date doit être dans minimum une semaine</span>
+  }
+}

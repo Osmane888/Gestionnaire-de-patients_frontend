@@ -7,18 +7,19 @@ import {SharedModule} from '../../shared/shared.module';
 import { PatientDetailsComponent } from './pages/patient-details/patient-details.component';
 import {AppModule} from "../../app.module";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import { PatientCreateComponent } from './pages/patient-create/patient-create.component';
 
 
 @NgModule({
   declarations: [
     PatientIndexComponent,
-    PatientDetailsComponent
+    PatientDetailsComponent,
+    PatientCreateComponent
   ],
   imports: [
     CommonModule,
     PatientRoutingModule,
     SharedModule,
-    AppModule,
     FormsModule,
     ReactiveFormsModule
   ]

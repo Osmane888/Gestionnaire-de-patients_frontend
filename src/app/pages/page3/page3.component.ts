@@ -1,5 +1,5 @@
 import { Component, ViewChild } from '@angular/core';
-import {CalendarModalComponent} from '../../modal/calendar-modal/calendar-modal.component';
+import {CalendarModalComponent} from '../../shared/modals/calendar-modal/calendar-modal.component';
 // Mets ici le bon chemin
 
 @Component({
