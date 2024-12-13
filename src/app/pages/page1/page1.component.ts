@@ -19,9 +19,23 @@ export class Page1Component {
     this.patients.push(patient);
   }
 
-  // Propriété calculée
   get totalPatients(): number {
     return this.patients.length; // Retourne le nombre de patients
+  }
+
+  selectedPatient: any = null;
+
+  confirmDelete(patient: any) {
+    this.selectedPatient = patient;
+  }
+
+  deletePatient() {
+    this.patients = this.patients.filter((p) => p.name!== this.selectedPatient.name);
+    this.selectedPatient = null;
+  }
+
+  cancelDelete() {
+    this.selectedPatient = null;
   }
 
 }

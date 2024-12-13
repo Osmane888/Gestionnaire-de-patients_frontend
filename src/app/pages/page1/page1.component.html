@@ -24,25 +24,39 @@
       <div class="table__cell table__cell--header">Registered</div>
       <div class="table__cell table__cell--header">Last treatment</div>
       <div class="table__cell table__cell--header">Action</div>
+      <div class="table__cell table__cell--header">Delete</div>
     </div>
   </div>
   <div class="table__body-wrapper">
-      <div class="table__body">
-        <div class="table__row" *ngFor="let patient of patients">
-          <div class="table__cell table__cell--data">{{ patient.name }}</div>
-          <div class="table__cell table__cell--data">{{ patient.phone }}</div>
-          <div class="table__cell table__cell--data">{{ patient.email }}</div>
-          <div class="table__cell table__cell--data">{{ patient.address }}</div>
-          <div class="table__cell table__cell--data">{{ patient.registered }}</div>
-          <div class="table__cell table__cell--data">{{ patient.lastTreatment }}</div>
-          <div class="table__cell table__cell--data">
+    <div class="table__body">
+      <div class="table__row" *ngFor="let patient of patients">
+        <div class="table__cell table__cell--data">{{ patient.name }}</div>
+        <div class="table__cell table__cell--data">{{ patient.phone }}</div>
+        <div class="table__cell table__cell--data">{{ patient.email }}</div>
+        <div class="table__cell table__cell--data">{{ patient.address }}</div>
+        <div class="table__cell table__cell--data">{{ patient.registered }}</div>
+        <div class="table__cell table__cell--data">{{ patient.lastTreatment }}</div>
+        <div class="table__cell table__cell--data">
           <a [routerLink]="['/pageDetails', patient.name]" class="detail-icon" >
             <img class="details-icon" src="logo/edit-white.png" alt="Details Icon">
           </a>
-          </div>
+        </div>
+        <div class="table__cell table__cell--data">
+          <img class="details-icon" src="logo/delete.png" alt="Details Icon" (click)="confirmDelete(patient)" >
         </div>
       </div>
     </div>
+  </div>
+</div>
+
+<div *ngIf="selectedPatient" class="confirmation-modal">
+  <div class="modal-content">
+    <h3>Êtes-vous sûr de vouloir supprimer {{ selectedPatient.name }} ?</h3>
+    <div class="modal-actions">
+      <button class="confirm-btn" (click)="deletePatient()">Oui</button>
+      <button class="cancel-btn" (click)="cancelDelete()">Non</button>
+    </div>
+  </div>
 </div>
 
 <!-- Composant modal -->
