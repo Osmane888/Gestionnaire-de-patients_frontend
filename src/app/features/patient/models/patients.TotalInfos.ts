@@ -4,7 +4,7 @@ export interface PatientsTotalInfos{
   firstname: string;
   email?: string;
   phoneNumber?: string;
-  birthdate: Date;
+  birthDate: Date;
   mutuelle?: string;
   info_supplement?: string;
   address: Address

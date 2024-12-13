@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {PatientsTotalInfos} from '../../models/patients.TotalInfos';
+import {Address, PatientsTotalInfos} from '../../models/patients.TotalInfos';
 import {PatientService} from '../../services/patientService';
 import {ActivatedRoute} from '@angular/router';
 
@@ -12,6 +12,7 @@ export class PatientDetailsComponent {
 
   infosTotalPatients!: PatientsTotalInfos;
   isEditing = false;
+  formattedBirthdate!: string;
 
 
   constructor(
@@ -19,17 +20,21 @@ export class PatientDetailsComponent {
     public _ar: ActivatedRoute,
   ) {
     let UUID = _ar.snapshot.params['id'];
-      this._patientService.findById(UUID).subscribe(
-        {
-          next: (resultDetails) => {
-            this.infosTotalPatients = resultDetails;
-            console.log(this.infosTotalPatients);
-          },
-          error: (error) => {
-            console.log(error)
-          }
-        })
+    this._patientService.findById(UUID).subscribe(
+      {
+        next: (resultDetails) => {
+          this.infosTotalPatients = resultDetails;
+          console.log(this.infosTotalPatients);
+        },
+        error: (error) => {
+          console.log(error)
+        }
+      })
+
   }
+}
+
+
   //
   // ngOnInit() {
   //   const name = this._ar.snapshot.paramMap.get('id');
@@ -60,4 +65,4 @@ export class PatientDetailsComponent {
   //   // Optionnel : Redirection vers la liste principale
   //   this.router.navigate(['/']);
   // }
-}
+

@@ -13,12 +13,13 @@
 
 <div *ngIf="infosTotalPatients" class="patient-details">
 <h2>{{ infosTotalPatients.firstname }} {{infosTotalPatients.lastname}}</h2>
-  <p><strong>Date de naissance : </strong>{{infosTotalPatients.birthdate}}</p>
+  <p><strong>Date de naissance : </strong>{{ infosTotalPatients.birthDate}}</p>
   <p><strong>Email : </strong>{{infosTotalPatients.email}}</p>
-  <p><strong>Adresse : </strong>{{infosTotalPatients.address}}</p>
+  <p><strong>Adresse : </strong>{{infosTotalPatients.address.city}} {{infosTotalPatients.address.street}} {{infosTotalPatients.address.streetNumber}} {{infosTotalPatients.address.zipCode}}</p>
   <p><strong>Mutuelle : </strong>{{infosTotalPatients.mutuelle}}</p>
   <p><strong>Numéro de tel : </strong>{{infosTotalPatients.phoneNumber}}</p>
   <p><strong>Info supp : </strong>{{infosTotalPatients.info_supplement}}</p>
+</div>
 <!--<p><strong>Registered:</strong> {{ patient.registered }}</p>-->
 <!--<p><strong>Last Treatment:</strong> {{ patient.lastTreatment }}</p>-->
 
@@ -50,4 +51,4 @@
 <!--  <button type="submit">Save</button>-->
 <!--  <button type="button" (click)="cancelEdit()">Cancel</button>-->
 <!--</form>-->
-</div>
+
