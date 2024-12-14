@@ -23,6 +23,7 @@ export class PatientIndexComponent {
     this._patientService.getAllPatients(url).subscribe(
       {
         next: (result) => {
+          console.log('Patients chargés:', result); // Vérification de l'ID
           this.infoBasicPatients = result;
         },
         error: (error) => {

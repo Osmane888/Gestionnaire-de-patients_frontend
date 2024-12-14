@@ -26,4 +26,8 @@ export class PatientService{
     return this._http.post<PatientsTotalInfos>(`${environment.apiUrl}/patients`, patient);
   }
 
+  updatePatient(patient: PatientsTotalInfos) {
+    return this._http.put<PatientsTotalInfos>(`${environment.apiUrl}/patients/${patient.id}`, patient);
+  }
+
 }

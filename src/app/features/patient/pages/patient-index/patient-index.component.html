@@ -6,10 +6,10 @@
     <p>Total Patient{{ totalPatients > 1 ? 's' : '' }}</p>
   </div>
   <div class="button-container">
-<!--    <button class="add-patient-btn" (click)="addPatientModal.openModal()">-->
-<!--      <i class="add-patient-btn__icon">+</i>-->
-<!--      Add Patient-->
-<!--    </button>-->
+    <button class="add-patient-btn" (click)="addPatientModal.openModal()">
+      <i class="add-patient-btn__icon">+</i>
+      Add Patient
+    </button>
   </div>
 </div>
 
@@ -24,7 +24,8 @@
 <!--    </button>-->
 <!--  </ul>-->
 <!--</div>-->
-<a routerLink="/patients/create"  >creer</a>
+
+<!--<a routerLink="/patients/create"  >creer</a>-->
 <div class="table">
   <div class="table__header">
     <div class="table__row">
@@ -47,7 +48,7 @@
 <!--        <div class="table__cell table__cell&#45;&#45;data">{{ patient.registered }}</div>-->
 <!--        <div class="table__cell table__cell&#45;&#45;data">{{ patient.lastTreatment }}</div>-->
         <div class="table__cell table__cell--data">
-          <a [routerLink]="'/' + patient.id" class="detail-icon">
+          <a [routerLink]="['/patients', patient.id]" class="detail-icon">
             <img class="details-icon" src="logo/edit-white.png" alt="Details Icon">
           </a>
         </div>
@@ -56,8 +57,8 @@
   </div>
 </div>
 
-<!-- Composant modal -->
-<!--<app-add-patient-modal-->
-<!--  #addPatientModal-->
-<!--  (patientAdded)="addPatient($event)">-->
-<!--</app-add-patient-modal>-->
+<!-- Composant modal-->
+<app-add-patient-modal
+ #addPatientModal
+  (patientAdded)="addPatient($event)">
+</app-add-patient-modal>

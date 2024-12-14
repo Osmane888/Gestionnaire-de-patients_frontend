@@ -9,19 +9,18 @@ import {AppModule} from "../../app.module";
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { PatientCreateComponent } from './pages/patient-create/patient-create.component';
 
-
 @NgModule({
   declarations: [
     PatientIndexComponent,
     PatientDetailsComponent,
-    PatientCreateComponent
+    PatientCreateComponent,
   ],
   imports: [
     CommonModule,
     PatientRoutingModule,
-    SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    SharedModule,
   ]
 })
 export class PatientModule { }

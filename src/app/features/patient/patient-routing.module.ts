@@ -5,10 +5,11 @@ import {PatientDetailsComponent} from './pages/patient-details/patient-details.c
 import {PatientCreateComponent} from './pages/patient-create/patient-create.component';
 
 const routes: Routes = [
-  {path: 'index', component: PatientIndexComponent},
-  {path : 'create', component: PatientCreateComponent},
-  {path: ':id', component: PatientDetailsComponent},
+  { path: 'index', component: PatientIndexComponent },
+  { path: 'create', component: PatientCreateComponent },
+  { path: ':id', component: PatientDetailsComponent },
 ];
+
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
