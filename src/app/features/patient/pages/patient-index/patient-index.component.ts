@@ -16,7 +16,7 @@ export class PatientIndexComponent {
   constructor(
     public _patientService: PatientService
   ) {
-    this.getPatients('http://localhost:8080/patients')
+    this.getPatients('http://localhost:8082/patients')
   }
 
   getPatients(url: string): void {
