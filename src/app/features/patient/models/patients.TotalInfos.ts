@@ -1,7 +1,7 @@
 export interface PatientsTotalInfos{
   id: string;
-  lastname: string;
-  firstname: string;
+  firstName: string;
+  lastName: string;
   email?: string;
   phoneNumber?: string;
   birthDate: Date;

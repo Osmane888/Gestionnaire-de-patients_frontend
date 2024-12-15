@@ -27,7 +27,12 @@ export class PatientService{
   }
 
   updatePatient(patient: PatientsTotalInfos) {
-    return this._http.put<PatientsTotalInfos>(`${environment.apiUrl}/patients/${patient.id}`, patient);
+    console.log("Patient à mettre à jour:", patient); // Vérification de l'objet envoyé
+    return this._http.put<void>(`${environment.apiUrl}/patients/${patient.id}`, patient);
+  }
+
+  deletePatient(id: string) {
+    return this._http.delete<void>(`${environment.apiUrl}/patients/${id}`);
   }
 
 }

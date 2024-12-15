@@ -11,6 +11,8 @@ import {PatientsTotalInfos} from '../../models/patients.TotalInfos';
 export class PatientIndexComponent {
 
   infoBasicPatients!: BasicInfosPatient[];
+  selectedPatient!: BasicInfosPatient;
+  showModal = false;
 
 
   constructor(
@@ -37,12 +39,48 @@ export class PatientIndexComponent {
     addPatientModal.openModal();
   }
 
+  // Méthode appelée lors de l'événement patientAdded
   addPatient(patient: BasicInfosPatient) {
-    this.infoBasicPatients.push(patient);
+    console.log("Nouveau patient ajouté:", patient);
+    this.infoBasicPatients.push(patient);  // Mise à jour locale de la liste
   }
 
   // Propriété calculée
   get totalPatients(): number {
     return this.infoBasicPatients.length; // Retourne le nombre de patients
   }
+
+  // Ouvre la fenêtre de confirmation
+  openDeleteModal(patient: BasicInfosPatient) {
+    this.selectedPatient = patient;
+    this.showModal = true;
+  }
+
+  // Annule la suppression
+  cancelDelete() {
+    this.showModal = false;
+    this.selectedPatient = undefined!;
+  }
+
+  // Supprime le patient
+  deletePatient() {
+    if (!this.selectedPatient?.id) return;
+
+    this._patientService.deletePatient(this.selectedPatient.id).subscribe({
+      next: () => {
+        // Suppression locale sans recharger toute la liste
+        this.infoBasicPatients = this.infoBasicPatients.filter(
+          (patient) => patient.id !== this.selectedPatient.id
+        );
+
+        this.showModal = false;
+        this.selectedPatient = undefined!;
+      },
+      error: (error) => {
+        console.error("Erreur lors de la suppression :", error);
+        alert("La suppression a échoué.");
+      }
+    });
+  }
+
 }
