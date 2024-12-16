@@ -11,15 +11,13 @@ import {RegisterForm} from '../models/RegisterForm';
 })
 export class AuthService {
 
-  private apiUrl = `${environment.apiUrl}`;
-
   constructor(private http: HttpClient) {}
 
   login(form: LoginForm): Observable<UserTokenDTO>{
-    return this.http.post<UserTokenDTO>(`${this.apiUrl}/login`, form);
+    return this.http.post<UserTokenDTO>(environment.apiUrl + '/login', form);
   }
 
   register(form: RegisterForm): Observable<void>{
-    return this.http.post<void>(`${this.apiUrl}/registr`, form);
+    return this.http.post<void>(environment.apiUrl + '/register', form);
   }
 }

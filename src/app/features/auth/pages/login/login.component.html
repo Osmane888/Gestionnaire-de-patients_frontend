@@ -1,1 +1,46 @@
-<p>login works!</p>
+<div class="login-container">
+  <h2>Connexion</h2>
+
+  <!-- Formulaire de connexion -->
+  <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+    <!-- Champ Email -->
+    <div class="form-group">
+      <label for="email">Email :</label>
+      <input
+        id="email"
+        type="email"
+        formControlName="email"
+        placeholder="Entrez votre adresse email"
+      />
+      <!-- Message d'erreur pour Email -->
+      <div class="error-message" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.invalid">
+        <small *ngIf="loginForm.get('email')?.errors?.['required']">L'email est requis.</small>
+        <small *ngIf="loginForm.get('email')?.errors?.['email']">Entrez une adresse email valide.</small>
+      </div>
+    </div>
+
+    <!-- Champ Mot de passe -->
+    <div class="form-group">
+      <label for="password">Mot de passe :</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Entrez votre mot de passe"
+      />
+      <!-- Message d'erreur pour Password -->
+      <div class="error-message" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.invalid">
+        <small *ngIf="loginForm.get('password')?.errors?.['required']">Le mot de passe est requis.</small>
+      </div>
+    </div>
+
+    <!-- Bouton de soumission -->
+    <button type="submit" [disabled]="loginForm.invalid">Se connecter</button>
+  </form>
+
+  <!-- Lien d'inscription -->
+  <p>
+    Pas encore de compte ?
+    <a routerLink="/register">Inscrivez-vous</a>
+  </p>
+</div>
