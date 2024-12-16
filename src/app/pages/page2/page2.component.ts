@@ -30,4 +30,13 @@ export class Page2Component {
   cancelDelete(): void {
     this.selectedStaff = null; // Annuler la suppression
   }
+
+  openModal(addStaffModal: any) {
+    addStaffModal.openModal();
+  }
+
+  addPatient(staff: any) {
+    this.staffMembers.push(staff);
+  }
+
 }

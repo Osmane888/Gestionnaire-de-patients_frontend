@@ -1,39 +1,63 @@
 <div class="modal" [class.modal--active]="isModalOpen">
   <div class="modal__content">
-    <h2>Add a new patient</h2>
-    <form (ngSubmit)="addPatient()">
-      <label>
-        Name:
-        <input type="text" [(ngModel)]="newPatient.name" name="name" required />
-      </label>
-      <label>
-        Phone:
-        <input type="text" [(ngModel)]="newPatient.phone" name="phone" required />
-      </label>
-      <label>
-        Email:
-        <input type="email" [(ngModel)]="newPatient.email" name="email" required />
-      </label>
-      <label>
-        Address:
-        <input type="text" [(ngModel)]="newPatient.address" name="address" required />
-      </label>
-      <label>
-        Mutuel:
-        <input type="text" [(ngModel)]="newPatient.mutuel" name="mutuel" required />
-      </label>
-      <label>
-        Registered:
-        <input type="date" [(ngModel)]="newPatient.registered" name="registered" required />
-      </label>
-      <label>
-        Last Treatment:
-        <input type="date" [(ngModel)]="newPatient.lastTreatment" name="lastTreatment" />
-      </label>
+    <h2>Créer un nouveau patient</h2>
+    <form [formGroup]="patientForm" (ngSubmit)="submit()">
+      <div>
+        <label for="lastName">Nom de famille :</label>
+        <input id="lastName" type="text" formControlName="lastName" />
+      </div>
+
+      <div>
+        <label for="firstName">Prénom :</label>
+        <input id="firstName" type="text" formControlName="firstName" />
+      </div>
+
+      <div>
+        <label for="email">Email :</label>
+        <input id="email" type="email" formControlName="email" />
+      </div>
+
+      <div>
+        <label for="phoneNumber">Téléphone :</label>
+        <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+      </div>
+
+      <div>
+        <label for="birthDate">Date de naissance :</label>
+        <input id="birthDate" type="date" formControlName="birthDate" />
+      </div>
+
+      <div>
+        <label for="mutuelle">Mutuelle :</label>
+        <input id="mutuelle" type="text" formControlName="mutuelle" />
+      </div>
+
+      <div>
+        <label for="info_supplement">Informations supplémentaires :</label>
+        <textarea id="info_supplement" formControlName="info_supplement"></textarea>
+      </div>
+
+      <fieldset formGroupName="address">
+        <legend>Adresse</legend>
+
+        <label for="street">Rue :</label>
+        <input id="street" type="text" formControlName="street" />
+
+        <label for="city">Ville :</label>
+        <input id="city" type="text" formControlName="city" />
+
+        <label for="streetNumber">Numéro de rue :</label>
+        <input id="streetNumber" type="text" formControlName="streetNumber" />
+
+        <label for="zipCode">Code postal :</label>
+        <input id="zipCode" type="text" formControlName="zipCode" />
+      </fieldset>
+
       <div class="modal__actions">
-        <button type="submit">Add</button>
-        <button type="button" (click)="closeModal()">Cancel</button>
+        <button type="submit">Créer</button>
+        <button type="button" (click)="closeModal()">Annuler</button>
       </div>
     </form>
   </div>
 </div>
+

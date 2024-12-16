@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
-import {PatientService} from '../../services/patientService';
-import {BasicInfosPatient} from '../../models/patients.BasicInfos';
-import {PatientsTotalInfos} from '../../models/patients.TotalInfos';
+import {PatientService} from '../../../services/patientService';
+import {BasicInfosPatient} from '../../../models/patients.BasicInfos';
+import {PatientsTotalInfos} from '../../../models/patients.TotalInfos';
 
 @Component({
   selector: 'app-patient-index',

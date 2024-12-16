@@ -1,6 +1,10 @@
-import { Component, ViewChild } from '@angular/core';
-import {CalendarModalComponent} from '../../shared/modals/calendar-modal/calendar-modal.component';
-// Mets ici le bon chemin
+import { Component } from '@angular/core';
+import { CalendarOptions } from '@fullcalendar/core';
+
+// Plugins FullCalendar
+import dayGridPlugin from '@fullcalendar/daygrid';
+import timeGridPlugin from '@fullcalendar/timegrid';
+import interactionPlugin from '@fullcalendar/interaction';
 
 @Component({
   selector: 'app-page3',
@@ -8,30 +12,77 @@ import {CalendarModalComponent} from '../../shared/modals/calendar-modal/calenda
   styleUrls: ['./page3.component.scss']
 })
 export class Page3Component {
-  @ViewChild('calendarModal') calendarModal!: CalendarModalComponent;
+  calendarOptions: CalendarOptions = {
+    initialView: 'timeGridWeek',
+    plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
+    headerToolbar: {
+      left: 'prev,next today',
+      center: 'title',
+      right: 'dayGridMonth,timeGridWeek,timeGridDay'
+    },
+    selectable: true,
+    editable: true,
+    events: [],
+    eventClick: this.handleEventClick.bind(this),
 
-  days = ['Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi'];
-  timeSlots = [
-    '09:00 am', '10:00 am', '11:00 am', '12:00 pm',
-    '01:00 pm', '02:00 pm', '03:00 pm', '04:00 pm', '05:00 pm'
-  ];
-  calendarCells = Array(this.days.length * this.timeSlots.length).fill(null);
-  appointments: ({ patientName: string; index: number } | undefined)[] = [];
+    // **Ajout des tranches horaires**
+    slotMinTime: '09:00:00', // Heure de début
+    slotMaxTime: '19:00:00', // Heure de fin
+    allDaySlot: false,      // Supprimer l'affichage "Toute la journée"
+  };
 
-  openModal(): void {
-    this.calendarModal.openModal(); // Appelle directement la méthode du composant modal
+
+  newEvent = {
+    title: '',
+    date: '',
+    startTime: '',
+    endTime: ''
+  };
+
+  eventToDelete: any = null;
+  showModal: boolean = false;
+
+  // Ajouter un événement
+  addEvent() {
+    if (this.newEvent.title && this.newEvent.date && this.newEvent.startTime && this.newEvent.endTime) {
+      const newCalendarEvent = {
+        id: Math.random().toString(),
+        title: this.newEvent.title,
+        start: `${this.newEvent.date}T${this.newEvent.startTime}`,
+        end: `${this.newEvent.date}T${this.newEvent.endTime}`
+      };
+
+      this.calendarOptions.events = [
+        ...(this.calendarOptions.events as any[]),
+        newCalendarEvent
+      ];
+
+      this.newEvent = { title: '', date: '', startTime: '', endTime: '' };
+    }
   }
 
-  addAppointment(appointment: { patientName: string; index: number }): void {
-    this.appointments[appointment.index] = appointment;
+  // Ouvre le modal de confirmation
+  handleEventClick(clickInfo: any) {
+    this.eventToDelete = clickInfo.event;
+    this.showModal = true;
   }
 
-  deleteAppointment(index: number, event: Event): void {
-    event.stopPropagation();
-    this.appointments[index] = undefined;
+  // Supprimer l'événement après confirmation
+  confirmDelete() {
+    if (this.eventToDelete) {
+      this.eventToDelete.remove();
+    }
+    this.closeModal();
   }
 
-  editCell(index: number): void {
-    console.log(`Cell clicked at index: ${index}`);
+  // Annuler la suppression
+  cancelDelete() {
+    this.closeModal();
+  }
+
+  // Fermer le modal
+  closeModal() {
+    this.showModal = false;
+    this.eventToDelete = null;
   }
 }

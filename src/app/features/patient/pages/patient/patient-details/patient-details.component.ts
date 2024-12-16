@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { Address, PatientsTotalInfos } from '../../models/patients.TotalInfos';
-import { PatientService } from '../../services/patientService';
+import { Address, PatientsTotalInfos } from '../../../models/patients.TotalInfos';
+import { PatientService } from '../../../services/patientService';
 import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
@@ -21,14 +21,13 @@ export class PatientDetailsComponent {
     const UUID = this._ar.snapshot.params['id'];
     this._patientService.findById(UUID).subscribe({
       next: (resultDetails: any) => {
-        // Mapper manuellement pour correspondre à l'interface TypeScript
         this.infosTotalPatients = {
           id: resultDetails.id,
-          firstName: resultDetails.firstname,   // Remap des champs corrects
+          firstName: resultDetails.firstname,
           lastName: resultDetails.lastname,
           email: resultDetails.email,
           phoneNumber: resultDetails.phoneNumber,
-          birthDate: new Date(resultDetails.birthDate),  // Conversion en Date
+          birthDate: new Date(resultDetails.birthDate),
           mutuelle: resultDetails.mutuelle,
           info_supplement: resultDetails.info_supplement,
           address: {

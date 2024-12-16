@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Animation requise par PrimeNG
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular'; // Import du module principal
 
 // Composants principaux
 import { AppComponent } from './app.component';
@@ -24,6 +25,7 @@ import { LoginComponent } from './pages/login/login.component';
 import { PagePatientDetailsComponent } from './pages/page-patient-details/page-patient-details.component';
 import {SharedModule} from './shared/shared.module';
 import {provideHttpClient} from '@angular/common/http';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
     declarations: [
@@ -41,6 +43,7 @@ import {provideHttpClient} from '@angular/common/http';
         AppRoutingModule,
         ReactiveFormsModule,
         FormsModule,
+        FullCalendarModule,
 
         // PrimeNG Modules
         DialogModule,
@@ -50,7 +53,8 @@ import {provideHttpClient} from '@angular/common/http';
         ToastModule,
         MessagesModule,
         MessageModule,
-        SharedModule
+        SharedModule,
+        AutoCompleteModule,
     ],
     providers: [
         provideHttpClient(),
