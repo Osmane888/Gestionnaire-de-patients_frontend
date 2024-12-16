@@ -20,9 +20,26 @@ export class PatientDetailsComponent {
   ) {
     const UUID = this._ar.snapshot.params['id'];
     this._patientService.findById(UUID).subscribe({
-      next: (resultDetails) => {
-        this.infosTotalPatients = resultDetails;
-        console.log(this.infosTotalPatients);
+      next: (resultDetails: any) => {
+        // Mapper manuellement pour correspondre à l'interface TypeScript
+        this.infosTotalPatients = {
+          id: resultDetails.id,
+          firstName: resultDetails.firstname,   // Remap des champs corrects
+          lastName: resultDetails.lastname,
+          email: resultDetails.email,
+          phoneNumber: resultDetails.phoneNumber,
+          birthDate: new Date(resultDetails.birthDate),  // Conversion en Date
+          mutuelle: resultDetails.mutuelle,
+          info_supplement: resultDetails.info_supplement,
+          address: {
+            street: resultDetails.address.street,
+            streetNumber: resultDetails.address.streetNumber,
+            city: resultDetails.address.city,
+            zipCode: resultDetails.address.zipCode
+          }
+        } as PatientsTotalInfos;
+
+        console.log('Patient correctement mappé:', this.infosTotalPatients);
       },
       error: (error) => {
         console.error(error);
