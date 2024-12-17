@@ -2,9 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 import { environment } from '../../../shared/environment/environment';
-import { Consultation } from '../forms/Consultation';
+import { Consultation } from '../models/Consultation';
 import { ConsultationForm } from '../forms/ConsultationForm';
-import { TotalConsultationInfos } from '../forms/TotalConsultationInfos';
+import { TotalConsultationInfos } from '../models/TotalConsultationInfos';
 
 @Injectable({
   providedIn: 'root'
