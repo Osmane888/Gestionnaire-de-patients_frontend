@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import {Professional} from '../../features/auth/forms/professional';
+import {ProfessionalToken} from '../../features/auth/forms/professionalToken';
+import {AuthService} from '../../features/auth/services/auth.service';
 
 @Component({
   selector: 'app-header',
@@ -7,6 +10,17 @@ import { Component } from '@angular/core';
 })
 export class HeaderComponent {
   isInfoModalOpen = false;
+  currentPro: ProfessionalToken | undefined;
+
+  constructor(private authService: AuthService) {
+    authService.professionalInfo$.subscribe(current => {
+      this.currentPro = current;
+    })
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 
   openInfoModal() {
     console.log("Information Modal Open Triggered");

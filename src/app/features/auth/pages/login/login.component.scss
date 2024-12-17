@@ -1,0 +1,105 @@
+/* Reset de la page */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:host {
+  font-family: Arial, sans-serif;
+  background-color: #a0c4ff; /* Bleu clair pour le fond */
+  height: 100vh; /* Hauteur totale de la fenêtre */
+  display: flex;
+  justify-content: center; /* Centre horizontalement */
+  align-items: center; /* Centre verticalement */
+  margin: 0;
+}
+
+/* Fenêtre de connexion */
+.login-container {
+  background-color: #ffffff; /* Fond blanc */
+  border-radius: 12px; /* Coins arrondis */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre douce */
+  width: 400px; /* Largeur fixe */
+  max-width: 100%;
+  padding: 2rem; /* Padding interne */
+  text-align: center; /* Centrage du texte */
+}
+
+/* Logo/nom (Optionnel) */
+.logo-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.logo-container img {
+  height: 40px;
+  border-radius: 50%;
+}
+
+.logo-container h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+/* Titre de connexion */
+.login-container h2 {
+  margin-bottom: 1rem;
+  color: #333;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+/* Styles des champs de formulaire */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left; /* Texte des labels aligné à gauche */
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+input:focus {
+  border-color: #1a73e8; /* Bleu focus */
+  box-shadow: 0 0 5px rgba(26, 115, 232, 0.3);
+}
+
+/* Bouton de connexion */
+button {
+  width: 100%;
+  padding: 0.8rem;
+  background-color: #1a73e8; /* Bleu vif */
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #165bb2; /* Bleu foncé */
+}
+
+button:disabled {
+  background-color: #b8c9e6; /* Bleu désactivé */
+  cursor: not-allowed;
+}

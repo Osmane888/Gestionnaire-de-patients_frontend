@@ -3,6 +3,8 @@ import {LoginForm} from '../../models/LoginForm';
 import {FormGroup, FormBuilder, Validators} from '@angular/forms';
 import {AuthService} from '../../services/auth.service';
 import {Router} from '@angular/router';
+import {Professional} from '../../forms/professional';
+import {ProfessionalToken} from '../../forms/professionalToken';
 
 @Component({
   selector: 'app-login',
@@ -11,6 +13,7 @@ import {Router} from '@angular/router';
 })
 export class LoginComponent {
   loginForm: FormGroup;
+  proLoggedInfo!: Professional;
 
   constructor(
     private fb: FormBuilder,
@@ -26,8 +29,9 @@ export class LoginComponent {
   onSubmit(): void {
     if(this.loginForm.valid){
       this.authService.login(this.loginForm.value).subscribe({
-        next: (success) => {
+        next: (success: ProfessionalToken)=> {
           localStorage.setItem('token', success.token);
+          this.proLoggedInfo = success.professional;
           this.router.navigate(['patients/index']);
         },
         error: (error) => {

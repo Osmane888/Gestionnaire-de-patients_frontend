@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {NavigationEnd, Router} from '@angular/router';
+import {AuthService} from './features/auth/services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -9,6 +10,7 @@ import {NavigationEnd, Router} from '@angular/router';
 export class AppComponent {
   isModalOpen = false;
   isLoginPage = false;
+
 
   openAdminModal() {
     console.log("Modale ouverte via AppComponent");
@@ -20,7 +22,10 @@ export class AppComponent {
     this.isModalOpen = false;
   }
 
-  constructor(private router: Router) {
+  constructor(
+    private router: Router,
+    private authService: AuthService,
+    ) {
     // Vérifie l'URL actuelle pour masquer la barre latérale et l'en-tête
     this.router.events.subscribe(event => {
       if (event instanceof NavigationEnd) {
@@ -30,4 +35,5 @@ export class AppComponent {
   }
 
 
+  protected readonly localStorage = localStorage;
 }

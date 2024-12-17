@@ -23,11 +23,13 @@ import { Page3Component } from './pages/page3/page3.component';
 import { PagePatientDetailsComponent } from './pages/page-patient-details/page-patient-details.component';
 import {SharedModule} from './shared/shared.module';
 import {provideHttpClient} from '@angular/common/http';
+import {LoginComponent} from './features/auth/pages/login/login.component';
 
 @NgModule({
     declarations: [
         AppComponent,
         HeaderComponent,
+        LoginComponent,
         SidebarComponent,
         Page2Component,
         Page3Component,

@@ -50,3 +50,105 @@ app-sidebar {
   height: calc(100vh - 60px);
   overflow : hidden;
 }
+
+/* Conteneur principal */
+.login-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f4f6f8; /* Gris clair */
+  font-family: Arial, sans-serif;
+}
+
+/* Titre principal */
+.login-container h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1.5rem;
+}
+
+/* Formulaire */
+.login-container form {
+  background-color: #fff;
+  padding: 2rem;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+}
+
+/* Groupe de champs */
+.form-group {
+  margin-bottom: 1.5rem;
+  text-align: left;
+}
+
+.form-group label {
+  font-size: 1rem;
+  font-weight: 600;
+  color: #555;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.8rem;
+  font-size: 1rem;
+  color: #333;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  outline: none;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.form-group input:focus {
+  border-color: #3498db; /* Bleu clair */
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.4);
+}
+
+/* Messages d'erreur */
+.error-message {
+  margin-top: 0.3rem;
+}
+
+.error-message small {
+  color: #e74c3c; /* Rouge */
+  font-size: 0.875rem;
+}
+
+/* Bouton de soumission */
+button[type="submit"] {
+  width: 100%;
+  padding: 0.9rem;
+  background-color: #e63946; /* Rouge intense */
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #d62828; /* Rouge plus foncé */
+}
+
+button[type="submit"]:disabled {
+  background-color: #ccc;
+  cursor: not-allowed;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .login-container form {
+    padding: 1.5rem;
+  }
+
+  .login-container h2 {
+    font-size: 1.8rem;
+  }
+}

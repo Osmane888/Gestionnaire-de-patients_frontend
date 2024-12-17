@@ -1,4 +1,5 @@
 <!-- Structure conditionnelle -->
+@if(localStorage.getItem('professionelToken')){
 <div *ngIf="!isLoginPage; else loginTemplate" class="app-container">
   <!-- Sidebar -->
   <app-sidebar (adminModalOpened)="openAdminModal()"></app-sidebar>
@@ -23,3 +24,6 @@
 <ng-template #loginTemplate>
   <router-outlet></router-outlet>
 </ng-template>
+} @else {
+  <app-login></app-login>
+}

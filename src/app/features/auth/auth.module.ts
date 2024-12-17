@@ -10,8 +10,9 @@ import { RegisterComponent } from './pages/register/register.component';
 
 @NgModule({
   declarations: [
-    LoginComponent,
     RegisterComponent
+  ],
+  exports: [
   ],
   imports: [
     CommonModule,
