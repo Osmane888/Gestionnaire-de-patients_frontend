@@ -1,13 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
+import { ConsultationService } from '../../features/calendar/services/ConsultationService';
+import { ConsultationForm } from '../../features/calendar/forms/ConsultationForm';
 
 // Plugins FullCalendar
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
-import {ConsultationService} from '../../features/calendar/services/ConsultationService';
-import {ConsultationForm} from '../../features/calendar/forms/ConsultationForm';
-
 
 @Component({
   selector: 'app-page3',
@@ -52,6 +51,7 @@ export class Page3Component implements OnInit {
 
   loadConsultations(): void {
     this.consultationService.getAllConsultations().subscribe(consultations => {
+      console.log('Consultations loaded:', consultations); // Vérification des données récupérées
       this.calendarOptions.events = consultations.map(consultation => ({
         id: consultation.id,
         title: consultation.rdvType,
