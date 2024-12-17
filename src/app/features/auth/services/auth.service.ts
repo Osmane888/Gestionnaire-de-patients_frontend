@@ -46,6 +46,7 @@ export class AuthService {
 
   register(form: RegisterForm): Observable<void>{
     return this._http.post<void>(environment.apiUrl + '/register', form);
+    console.log("Formulaire soumis")
   }
 
   logout(): void{

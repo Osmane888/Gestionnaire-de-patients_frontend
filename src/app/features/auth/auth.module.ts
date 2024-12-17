@@ -13,6 +13,7 @@ import { RegisterComponent } from './pages/register/register.component';
     RegisterComponent
   ],
   exports: [
+    RegisterComponent
   ],
   imports: [
     CommonModule,

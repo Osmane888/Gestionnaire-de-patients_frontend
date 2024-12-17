@@ -24,6 +24,7 @@ import { PagePatientDetailsComponent } from './pages/page-patient-details/page-p
 import {SharedModule} from './shared/shared.module';
 import {provideHttpClient} from '@angular/common/http';
 import {LoginComponent} from './features/auth/pages/login/login.component';
+import {AuthModule} from "./features/auth/auth.module";
 
 @NgModule({
     declarations: [
@@ -35,23 +36,24 @@ import {LoginComponent} from './features/auth/pages/login/login.component';
         Page3Component,
         PagePatientDetailsComponent,
     ],
-    imports: [
-        BrowserModule,
-        BrowserAnimationsModule,
-        AppRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
 
-        // PrimeNG Modules
-        DialogModule,
-        ButtonModule,
-        InputTextModule,
-        TableModule,
-        ToastModule,
-        MessagesModule,
-        MessageModule,
-        SharedModule
-    ],
+    // PrimeNG Modules
+    DialogModule,
+    ButtonModule,
+    InputTextModule,
+    TableModule,
+    ToastModule,
+    MessagesModule,
+    MessageModule,
+    SharedModule,
+    AuthModule
+  ],
     providers: [
         provideHttpClient(),
     ],
