@@ -9,17 +9,23 @@
     <form (ngSubmit)="addEvent()">
       <h3>Ajouter un Rendez-vous</h3>
 
-      <label for="title">Titre :</label>
-      <input id="title" type="text" [(ngModel)]="newEvent.title" name="title" required>
+      <label for="patientid">Patient ID :</label>
+      <input id="patientid" type="text" [(ngModel)]="newEvent.patientid" name="patientid" required>
 
-      <label for="date">Date :</label>
-      <input id="date" type="date" [(ngModel)]="newEvent.date" name="date" required>
+      <label for="dateRdv">Date de RDV :</label>
+      <input id="dateRdv" type="date" [(ngModel)]="newEvent.dateRdv" name="dateRdv" required>
 
-      <label for="startTime">Heure de Début :</label>
-      <input id="startTime" type="time" [(ngModel)]="newEvent.startTime" name="startTime" required>
+      <label for="hourRdv">Heure de Début :</label>
+      <input id="hourRdv" type="time" [(ngModel)]="newEvent.hourRdv" name="hourRdv" required>
 
-      <label for="endTime">Heure de Fin :</label>
-      <input id="endTime" type="time" [(ngModel)]="newEvent.endTime" name="endTime" required>
+      <label for="durationRdv">Durée du RDV :</label>
+      <input id="durationRdv" type="time" [(ngModel)]="newEvent.durationRdv" name="durationRdv" required>
+
+      <label for="statusRdv">Statut du RDV :</label>
+      <input id="statusRdv" type="text" [(ngModel)]="newEvent.statusRdv" name="statusRdv" required>
+
+      <label for="rdvType">Type de RDV :</label>
+      <input id="rdvType" type="text" [(ngModel)]="newEvent.rdvType" name="rdvType" required>
 
       <button type="submit">Ajouter</button>
     </form>

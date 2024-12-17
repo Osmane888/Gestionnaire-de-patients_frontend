@@ -35,4 +35,10 @@ export class PatientService{
     return this._http.delete<void>(`${environment.apiUrl}/patients/${id}`);
   }
 
+  searchPatientsByName(name: string) {
+    const url = `${environment.apiUrl}/patients/search/by-name?name=${name}`;
+    return this._http.get<PatientsTotalInfos[]>(url);
+  }
+
+
 }

@@ -1,17 +1,20 @@
-import { Component } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import { CalendarOptions } from '@fullcalendar/core';
 
 // Plugins FullCalendar
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import {ConsultationService} from '../../features/calendar/services/ConsultationService';
+import {ConsultationForm} from '../../features/calendar/forms/ConsultationForm';
+
 
 @Component({
   selector: 'app-page3',
   templateUrl: './page3.component.html',
   styleUrls: ['./page3.component.scss']
 })
-export class Page3Component {
+export class Page3Component implements OnInit {
   calendarOptions: CalendarOptions = {
     initialView: 'timeGridWeek',
     plugins: [dayGridPlugin, timeGridPlugin, interactionPlugin],
@@ -24,64 +27,76 @@ export class Page3Component {
     editable: true,
     events: [],
     eventClick: this.handleEventClick.bind(this),
-
-    // **Ajout des tranches horaires**
-    slotMinTime: '09:00:00', // Heure de début
-    slotMaxTime: '19:00:00', // Heure de fin
-    allDaySlot: false,      // Supprimer l'affichage "Toute la journée"
+    slotMinTime: '09:00:00',
+    slotMaxTime: '19:00:00',
+    allDaySlot: false,
   };
 
-
-  newEvent = {
-    title: '',
-    date: '',
-    startTime: '',
-    endTime: ''
+  newEvent: ConsultationForm = {
+    patientid: '',
+    dateRdv: '',
+    hourRdv: '',
+    durationRdv: '',
+    statusRdv: '',
+    rdvType: ''
   };
 
   eventToDelete: any = null;
   showModal: boolean = false;
 
-  // Ajouter un événement
-  addEvent() {
-    if (this.newEvent.title && this.newEvent.date && this.newEvent.startTime && this.newEvent.endTime) {
-      const newCalendarEvent = {
-        id: Math.random().toString(),
-        title: this.newEvent.title,
-        start: `${this.newEvent.date}T${this.newEvent.startTime}`,
-        end: `${this.newEvent.date}T${this.newEvent.endTime}`
-      };
+  constructor(private consultationService: ConsultationService) {}
 
-      this.calendarOptions.events = [
-        ...(this.calendarOptions.events as any[]),
-        newCalendarEvent
-      ];
+  ngOnInit(): void {
+    this.loadConsultations();
+  }
 
-      this.newEvent = { title: '', date: '', startTime: '', endTime: '' };
+  loadConsultations(): void {
+    this.consultationService.getAllConsultations().subscribe(consultations => {
+      this.calendarOptions.events = consultations.map(consultation => ({
+        id: consultation.id,
+        title: consultation.rdvType,
+        start: `${consultation.dateRdv}T${consultation.hourRdv}`,
+        end: `${consultation.dateRdv}T${consultation.durationRdv}`
+      }));
+    });
+  }
+
+  addEvent(): void {
+    if (this.newEvent.patientid && this.newEvent.dateRdv && this.newEvent.hourRdv && this.newEvent.durationRdv && this.newEvent.statusRdv && this.newEvent.rdvType) {
+      this.consultationService.createConsultation(this.newEvent).subscribe(consultation => {
+        this.calendarOptions.events = [
+          ...(this.calendarOptions.events as any[]),
+          {
+            id: consultation.id,
+            title: consultation.rdvType,
+            start: `${consultation.dateRdv}T${consultation.hourRdv}`,
+            end: `${consultation.dateRdv}T${consultation.durationRdv}`
+          }
+        ];
+        this.newEvent = { patientid: '', dateRdv: '', hourRdv: '', durationRdv: '', statusRdv: '', rdvType: '' };
+      });
     }
   }
 
-  // Ouvre le modal de confirmation
-  handleEventClick(clickInfo: any) {
+  handleEventClick(clickInfo: any): void {
     this.eventToDelete = clickInfo.event;
     this.showModal = true;
   }
 
-  // Supprimer l'événement après confirmation
-  confirmDelete() {
+  confirmDelete(): void {
     if (this.eventToDelete) {
-      this.eventToDelete.remove();
+      this.consultationService.deleteConsultation(this.eventToDelete.id).subscribe(() => {
+        this.eventToDelete.remove();
+        this.closeModal();
+      });
     }
+  }
+
+  cancelDelete(): void {
     this.closeModal();
   }
 
-  // Annuler la suppression
-  cancelDelete() {
-    this.closeModal();
-  }
-
-  // Fermer le modal
-  closeModal() {
+  closeModal(): void {
     this.showModal = false;
     this.eventToDelete = null;
   }
