@@ -32,7 +32,7 @@ export class LoginComponent {
         next: (success: ProfessionalToken)=> {
           localStorage.setItem('token', success.token);
           this.proLoggedInfo = success.professional;
-          this.router.navigate(['patients/index']);
+          this.router.navigate(['page2']);
         },
         error: (error) => {
           console.error('Login failed: ', error);

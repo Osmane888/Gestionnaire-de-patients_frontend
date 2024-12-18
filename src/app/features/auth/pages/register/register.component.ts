@@ -22,18 +22,21 @@ export class RegisterComponent {
       phoneNumber: ['', Validators.required],
       licenseNumber: ['', Validators.required],
       specialization: ['', Validators.required],
-      role: [{ value: 'ADMINISTRATEUR', disabled: true }, Validators.required], // Rôle fixe
+      role: ['', Validators.required], // Rôle fixe
       password: ['', [Validators.required]],
     });
   }
 
   onSubmit() {
     if (this.registerForm.valid) {
-      // Extraire les valeurs complètes du formulaire
-      const formData: RegisterForm = this.registerForm.getRawValue();
-      console.log('Form submitted:', formData);
-      this.authService.register(formData)
-      console.log("formulaire soumis avec succès")
+      this.authService.register(this.registerForm.value).subscribe({
+        next: data => {
+          console.log("formulaire soumis avec succès")
+        },
+        error: error => {
+          console.log(error)
+        }
+      });
 
     } else {
       console.log('Form is invalid');

@@ -20,11 +20,11 @@ import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { Page3Component } from './pages/page3/page3.component';
-import { PagePatientDetailsComponent } from './pages/page-patient-details/page-patient-details.component';
 import {SharedModule} from './shared/shared.module';
-import {provideHttpClient} from '@angular/common/http';
+import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {LoginComponent} from './features/auth/pages/login/login.component';
 import {AuthModule} from "./features/auth/auth.module";
+import {jwtInterceptor} from './core/jwt.interceptor';
 
 @NgModule({
     declarations: [
@@ -34,7 +34,6 @@ import {AuthModule} from "./features/auth/auth.module";
         SidebarComponent,
         Page2Component,
         Page3Component,
-        PagePatientDetailsComponent,
     ],
   imports: [
     BrowserModule,
@@ -55,7 +54,9 @@ import {AuthModule} from "./features/auth/auth.module";
     AuthModule
   ],
     providers: [
-        provideHttpClient(),
+        provideHttpClient(
+          withInterceptors([jwtInterceptor])
+        ),
     ],
     bootstrap: [AppComponent],
     exports: [

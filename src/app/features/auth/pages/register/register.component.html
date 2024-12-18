@@ -1,4 +1,5 @@
 <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+  <!-- Prénom -->
   <div class="form-group">
     <label for="firstName">First Name</label>
     <input
@@ -11,6 +12,7 @@
     />
   </div>
 
+  <!-- Nom de famille -->
   <div class="form-group">
     <label for="lastName">Last Name</label>
     <input
@@ -23,6 +25,7 @@
     />
   </div>
 
+  <!-- Email -->
   <div class="form-group">
     <label for="email">Email</label>
     <input
@@ -35,6 +38,7 @@
     />
   </div>
 
+  <!-- Numéro de téléphone -->
   <div class="form-group">
     <label for="phoneNumber">Phone Number</label>
     <input
@@ -47,6 +51,7 @@
     />
   </div>
 
+  <!-- Numéro de licence -->
   <div class="form-group">
     <label for="licenseNumber">License Number</label>
     <input
@@ -59,6 +64,7 @@
     />
   </div>
 
+  <!-- Spécialisation -->
   <div class="form-group">
     <label for="specialization">Specialization</label>
     <input
@@ -71,14 +77,17 @@
     />
   </div>
 
+  <!-- Dropdown pour le rôle -->
   <div class="form-group">
-    <input
-      type="hidden"
-      formControlName="role"
-      value="ADMINISTRATEUR"
-    />
+    <label for="role">Choisissez un rôle :</label>
+    <select id="role" formControlName="role" class="form-control">
+      <option value="ADMINISTRATEUR">ADMINISTRATEUR</option>
+      <option value="PERSONNEL_MEDICAL">PERSONNEL MÉDICAL</option>
+      <option value="PERSONNEL_ADMINISTRATIF">PERSONNEL ADMINISTRATIF</option>
+    </select>
   </div>
 
+  <!-- Mot de passe -->
   <div class="form-group">
     <label for="password">Password</label>
     <input
@@ -91,6 +100,7 @@
     />
   </div>
 
+  <!-- Bouton Soumission -->
   <button type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">
     Create Account
   </button>
