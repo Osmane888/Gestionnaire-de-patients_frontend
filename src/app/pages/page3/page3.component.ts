@@ -1,12 +1,16 @@
-import { Component, OnInit } from '@angular/core';
-import { CalendarOptions } from '@fullcalendar/core';
-import { ConsultationService } from '../../features/calendar/services/ConsultationService';
-import { ConsultationForm } from '../../features/calendar/forms/ConsultationForm';
+import {Component, OnInit} from '@angular/core';
+import {CalendarOptions} from '@fullcalendar/core';
+import {ConsultationService} from '../../features/calendar/services/ConsultationService';
+import {ConsultationForm} from '../../features/calendar/forms/ConsultationForm';
 
 // Plugins FullCalendar
 import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
+import {BasicInfosPatient} from '../../features/patient/models/patients.BasicInfos';
+import {PatientService} from '../../features/patient/services/patientService';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
 
 @Component({
   selector: 'app-page3',
@@ -31,22 +35,41 @@ export class Page3Component implements OnInit {
     allDaySlot: false,
   };
 
-  newEvent: ConsultationForm = {
-    patientid: '',
-    dateRdv: '',
-    hourRdv: '',
-    durationRdv: '',
-    statusRdv: '',
-    rdvType: ''
-  };
+
+  newEvent!: FormGroup;
 
   eventToDelete: any = null;
   showModal: boolean = false;
+  patients?: BasicInfosPatient[];
+  filteredPatients?: BasicInfosPatient[];
 
-  constructor(private consultationService: ConsultationService) {}
+  constructor(
+    private consultationService: ConsultationService,
+    private patientService: PatientService,
+    private fb: FormBuilder
+  ) {
+    this.newEvent = this.fb.group({
+      patientid: [null,[Validators.required]],
+      dateRdv: [null,[Validators.required]],
+      hourRdv: [null,[Validators.required]],
+      durationRdv: [null,[Validators.required]],
+      statusRdv: [null,[]],
+      rdvType: [null,[Validators.required]]
+    })
+  }
 
   ngOnInit(): void {
     this.loadConsultations();
+    this.loadPatients();
+  }
+
+  loadPatients(): void {
+    this.patientService.getAllPatients('http://localhost:8082/patients').subscribe({
+      next: value => {
+        this.patients = value;
+        this.filteredPatients = this.patients;
+      }
+    })
   }
 
   loadConsultations(): void {
@@ -62,8 +85,14 @@ export class Page3Component implements OnInit {
   }
 
   addEvent(): void {
-    if (this.newEvent.patientid && this.newEvent.dateRdv && this.newEvent.hourRdv && this.newEvent.durationRdv && this.newEvent.statusRdv && this.newEvent.rdvType) {
-      this.consultationService.createConsultation(this.newEvent).subscribe(consultation => {
+    console.log(this.newEvent.value)
+    if(this.newEvent.invalid){
+
+      console.log('Non valid');
+      return;
+    }
+    this.consultationService.createConsultation(this.newEvent.value).subscribe(
+      consultation => {
         this.calendarOptions.events = [
           ...(this.calendarOptions.events as any[]),
           {
@@ -73,9 +102,9 @@ export class Page3Component implements OnInit {
             end: `${consultation.dateRdv}T${consultation.durationRdv}`
           }
         ];
-        this.newEvent = { patientid: '', dateRdv: '', hourRdv: '', durationRdv: '', statusRdv: '', rdvType: '' };
-      });
-    }
+        this.newEvent.reset();
+      }
+    );
   }
 
   handleEventClick(clickInfo: any): void {
@@ -90,6 +119,13 @@ export class Page3Component implements OnInit {
         this.closeModal();
       });
     }
+  }
+
+  filterPatients(event: AutoCompleteCompleteEvent) {
+
+    let query = event.query.toLowerCase();
+
+    this.filteredPatients = this.patients?.filter(p => p.fullname.toLowerCase().includes(query));
   }
 
   cancelDelete(): void {
