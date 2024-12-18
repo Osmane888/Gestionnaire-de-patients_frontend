@@ -11,6 +11,7 @@ import {BasicInfosPatient} from '../../features/patient/models/patients.BasicInf
 import {PatientService} from '../../features/patient/services/patientService';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {AutoCompleteCompleteEvent} from 'primeng/autocomplete';
+import {environment} from '../../shared/environment/environment';
 
 @Component({
   selector: 'app-page3',
@@ -64,7 +65,7 @@ export class Page3Component implements OnInit {
   }
 
   loadPatients(): void {
-    this.patientService.getAllPatients('http://localhost:8082/patients').subscribe({
+    this.patientService.getAllPatients(environment.apiUrl + '/patients').subscribe({
       next: value => {
         this.patients = value;
         this.filteredPatients = this.patients;
