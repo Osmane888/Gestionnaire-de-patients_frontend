@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import {Professional} from "../../features/auth/forms/professional";
+import {AuthService} from "../../features/auth/services/auth.service";
+import {UserTokenDTO} from "../../features/auth/models/UserTokenDTO";
+import {ProfessionalsDTO} from "../models/professionalsDTO";
 
 @Component({
   selector: 'app-page2',
@@ -6,6 +10,29 @@ import { Component } from '@angular/core';
   styleUrls: ['./page2.component.scss'],
 })
 export class Page2Component {
+
+  professionals!: ProfessionalsDTO[];
+
+  constructor(
+      private readonly _authService: AuthService,
+  ) {}
+
+  ngOnInit(): void {
+    this.loadProfessionals();
+  }
+
+  loadProfessionals(): void{
+    this._authService.getAllProfessionals().subscribe({
+      next: (data: ProfessionalsDTO[]) => {
+        this.professionals = data;
+        console.log("les professionels ont été chargé");
+      },
+      error:(error) => {
+        console.log("Erreur dans le chargement des professionels " + error);
+      },
+    })
+  }
+
   staffMembers = [
     { id: 1, name: 'Ayoub Legouirah', email: 'ayoubgrand@outlook.fr', role: 'Admin' },
     { id: 2, name: 'Jane Doe', email: 'jane.doe@example.com', role: 'Manager' },
@@ -15,7 +42,7 @@ export class Page2Component {
   selectedStaff: any = null; // Utilisateur à supprimer
 
   get totalStaff(): number {
-    return this.staffMembers.length;
+    return this.professionals.length;
   }
 
   confirmDelete(staff: any): void {
