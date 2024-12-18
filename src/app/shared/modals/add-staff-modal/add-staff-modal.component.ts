@@ -12,9 +12,14 @@ export class AddStaffModalComponent {
   @Output() staffAdded = new EventEmitter<any>(); // Événement pour notifier le composant parent
 
   newStaff = {
-    name: '',
+    firstName: '',
+    lastName: '',
     email: '',
+    phoneNumber: '',
+    licenseNumber: '',
     role: '',
+    specialization: '',
+    password: '',
   };
 
   openModal() {
@@ -33,9 +38,14 @@ export class AddStaffModalComponent {
 
   resetForm() {
     this.newStaff = {
-      name: '',
+      firstName: '',
+      lastName: '',
       email: '',
-      role: ''
+      phoneNumber: '',
+      licenseNumber: '',
+      role: '',
+      specialization: '',
+      password: ''
     };
   }
 

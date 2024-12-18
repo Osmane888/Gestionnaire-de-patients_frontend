@@ -7,6 +7,7 @@ import {RegisterForm} from '../models/RegisterForm';
 import {ProfessionalToken} from '../forms/professionalToken';
 import {Router} from '@angular/router';
 import {ProfessionalsDTO} from '../../../pages/models/professionalsDTO';
+import {AddStaffDTO} from '../../../pages/models/addStaffDTO';
 
 @Injectable({
   providedIn: 'root'
@@ -44,8 +45,8 @@ export class AuthService {
     );
   }
 
-  register(form: RegisterForm): Observable<void>{
-    return this._http.post<void>(environment.apiUrl + '/register', form);
+  register(form: AddStaffDTO): Observable<Object>{
+    return this._http.post(environment.apiUrl + '/register', form);
     console.log("Formulaire soumis");
   }
 
@@ -57,5 +58,9 @@ export class AuthService {
 
   getAllProfessionals(): Observable<ProfessionalsDTO[]>{
     return this._http.get<ProfessionalsDTO[]>(environment.apiUrl + '/professionals');
+  }
+
+  deleteProfessional(id: string): Observable<void>{
+    return this._http.delete<void>(`${environment.apiUrl}/professionals/${id}`);
   }
 }

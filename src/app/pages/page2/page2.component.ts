@@ -3,6 +3,7 @@ import {Professional} from "../../features/auth/forms/professional";
 import {AuthService} from "../../features/auth/services/auth.service";
 import {UserTokenDTO} from "../../features/auth/models/UserTokenDTO";
 import {ProfessionalsDTO} from "../models/professionalsDTO";
+import {AddStaffDTO} from '../models/addStaffDTO';
 
 @Component({
   selector: 'app-page2',
@@ -33,12 +34,6 @@ export class Page2Component {
     })
   }
 
-  staffMembers = [
-    { id: 1, name: 'Ayoub Legouirah', email: 'ayoubgrand@outlook.fr', role: 'Admin' },
-    { id: 2, name: 'Jane Doe', email: 'jane.doe@example.com', role: 'Manager' },
-    { id: 3, name: 'John Smith', email: 'john.smith@example.com', role: 'Staff' },
-  ];
-
   selectedStaff: any = null; // Utilisateur à supprimer
 
   get totalStaff(): number {
@@ -49,8 +44,17 @@ export class Page2Component {
     this.selectedStaff = staff; // Stocker l'utilisateur sélectionné
   }
 
-  deleteStaff(id: number): void {
-    this.staffMembers = this.staffMembers.filter((staff) => staff.id !== id);
+  deleteStaff(id: string): void {
+    this._authService.deleteProfessional(id).subscribe({
+      next: () => {
+        console.log(`Professionnel avec l'ID ${id} supprimé avec succès.`);
+        this.professionals = this.professionals.filter((professional) => professional.id !== id);
+        this.selectedStaff = null;
+      },
+      error: (error) => {
+        console.error("Erreur lors de la suppression du professionnel : ", error);
+      },
+    });
     this.selectedStaff = null; // Réinitialiser après suppression
   }
 
@@ -62,8 +66,16 @@ export class Page2Component {
     addStaffModal.openModal();
   }
 
-  addPatient(staff: any) {
-    this.staffMembers.push(staff);
+  addStaff(newStaff: AddStaffDTO): void {
+    this._authService.register(newStaff).subscribe({
+      next:(response: any) => {
+        console.log('Professionel ajouté avec succès');
+        this.loadProfessionals();
+      },
+      error:(error)=>{
+        console.error('Erreur lors de l\'insertion d\'un professionel')
+      }
+    })
   }
 
 }

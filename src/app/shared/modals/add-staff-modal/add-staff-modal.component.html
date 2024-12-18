@@ -3,16 +3,28 @@
     <h2>Add a new patient</h2>
     <form (ngSubmit)="addStaff()">
       <label>
-        Name:
-        <input type="text" [(ngModel)]="newStaff.name" name="name" required />
+        FirstName:
+        <input type="text" [(ngModel)]="newStaff.firstName" name="firstName" required />
+      </label>
+      <label>
+        LastName:
+        <input type="text" [(ngModel)]="newStaff.lastName" name="lastName" required />
       </label>
       <label>
         Email:
         <input type="email" [(ngModel)]="newStaff.email" name="email" required />
       </label>
       <label>
-        Role:
-        <input type="text" [(ngModel)]="newStaff.role" name="address" required />
+        phoneNumber:
+        <input type="text" [(ngModel)]="newStaff.phoneNumber" name="phoneNumber" required />
+      </label>
+      <label>
+        LicenseNumber:
+        <input type="text" [(ngModel)]="newStaff.licenseNumber" name="licenseNumber" required />
+      </label>
+      <label>
+        Password:
+        <input type="password" [(ngModel)]="newStaff.password" name="password" required />
       </label>
 
       <div class="modal__actions">

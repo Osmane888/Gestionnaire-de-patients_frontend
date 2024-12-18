@@ -6,7 +6,7 @@
       <p>Total Staff</p>
     </div>
     <div class="button-container">
-      <button class="add-patient-btn" (click)="addStaffModal.openModal()">
+      <button class="add-patient-btn" (click)="openModal(addStaffModal)">
         <i class="add-patient-btn__icon">+</i>
         Add Staff
       </button>
@@ -40,5 +40,5 @@
 </div>
 
 <app-add-staff-modal
-  #addStaffModal (staffAdded)="addPatient($event)">
+  #addStaffModal (staffAdded)="addStaff($event)">
 </app-add-staff-modal>
