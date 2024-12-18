@@ -1,0 +1,63 @@
+<!-- Bouton pour ouvrir la modal -->
+<div class="disposition" >
+  <div class="patient-header">
+    <img class="patient-icon" src="logo/person.png" alt="Patients Icon">
+    <h2>{{ totalPatients }}</h2>
+    <p>Total Patient{{ totalPatients > 1 ? 's' : '' }}</p>
+  </div>
+  <div class="button-container">
+<!--    <button class="add-patient-btn" (click)="addPatientModal.openModal()">-->
+<!--      <i class="add-patient-btn__icon">+</i>-->
+<!--      Add Patient-->
+<!--    </button>-->
+  </div>
+</div>
+
+
+<!--<h1>Liste des patients</h1>-->
+<!--<div>-->
+<!--  <ul *ngFor="let infos of infoBasicPatients">-->
+<!--    <li>{{infos.firstname}}</li>-->
+<!--    <li>{{infos.lastname}}</li>-->
+<!--    <button class="blue">-->
+<!--      <a [routerLink]="'/' + infos.id">Infos</a>-->
+<!--    </button>-->
+<!--  </ul>-->
+<!--</div>-->
+<a routerLink="/patients/create"  >creer</a>
+<div class="table">
+  <div class="table__header">
+    <div class="table__row">
+      <div class="table__cell table__cell--header">Prénom</div>
+      <div class="table__cell table__cell--header">Nom</div>
+      <div class="table__cell table__cell--header">Email</div>
+      <div class="table__cell table__cell--header">Numéro de téléphone</div>
+<!--      <div class="table__cell table__cell&#45;&#45;header">Registered</div>-->
+<!--      <div class="table__cell table__cell&#45;&#45;header">Last treatment</div>-->
+      <div class="table__cell table__cell--header">Action</div>
+    </div>
+  </div>
+  <div class="table__body-wrapper">
+    <div class="table__body">
+      <div class="table__row" *ngFor="let patient of infoBasicPatients">
+        <div class="table__cell table__cell--data">{{ patient.firstname }}</div>
+        <div class="table__cell table__cell--data">{{ patient.lastname }}</div>
+        <div class="table__cell table__cell--data">{{ patient.email }}</div>
+        <div class="table__cell table__cell--data">{{ patient.phoneNumber }}</div>
+<!--        <div class="table__cell table__cell&#45;&#45;data">{{ patient.registered }}</div>-->
+<!--        <div class="table__cell table__cell&#45;&#45;data">{{ patient.lastTreatment }}</div>-->
+        <div class="table__cell table__cell--data">
+          <a [routerLink]="'/' + patient.id" class="detail-icon">
+            <img class="details-icon" src="logo/edit-white.png" alt="Details Icon">
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Composant modal -->
+<!--<app-add-patient-modal-->
+<!--  #addPatientModal-->
+<!--  (patientAdded)="addPatient($event)">-->
+<!--</app-add-patient-modal>-->
