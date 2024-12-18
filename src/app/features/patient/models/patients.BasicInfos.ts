@@ -4,5 +4,6 @@ export interface BasicInfosPatient {
       firstname: string;
       email?: string;
       phoneNumber?: string;
+      fullname: string;
 }
 
