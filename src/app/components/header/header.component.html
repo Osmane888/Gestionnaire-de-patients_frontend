@@ -4,11 +4,23 @@
   </div>
 
   <div class="header__search">
-    <input type="text" class="header__search-input" placeholder="Search for patient ..." />
-    <button class="header__search-button">
+    <input type="text" class="header__search-input" placeholder="Search for patient ..."
+           [(ngModel)]="searchQuery" (input)="onSearch()" />
+    <button class="header__search-button" (click)="onSearch()">
       <img src="logo/search-logo-header.png" alt="Logo Search">
     </button>
+
+    <div class="search-results" *ngIf="isSearchOpen && searchResults.length > 0">
+      <ul>
+        <li *ngFor="let patient of searchResults" class="search-result-item">
+          <a [routerLink]="['/patients', patient.id]" class="patient-link">
+            <span class="patient-name">{{ patient.firstname }} {{ patient.lastname }}</span>
+          </a>
+        </li>
+      </ul>
+    </div>
   </div>
+
 
   <div class="header__separator"></div>
 

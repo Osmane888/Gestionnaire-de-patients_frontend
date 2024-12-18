@@ -2,6 +2,76 @@
   font-family: "FONT NAME", Helvetica, sans-serif;
   padding-left: 25px;
 
+  .disposition{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+
+    .staff-header {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 10px;
+      margin-bottom: 20px;
+
+
+      .staff-icon {
+        width: 2.5rem;
+        height: auto;
+      }
+
+      h2 {
+        font-size: 24px;
+        color: #405ae7;
+        margin: 0;
+      }
+
+      p {
+        font-size: 16px;
+        color: #666;
+        font-weight: bold;
+        margin-top: 3px;
+      }
+    }
+
+    .add-patient-btn {
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      padding: 10px 20px;
+      margin-bottom:20px;
+      margin-right:20px;
+      font-size: 16px;
+      font-weight: bold;
+      color: white;
+      background-color: #405ae7;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background-color 0.3s ease, transform 0.2s ease;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      &:hover {
+        background-color: #3448c5;
+        transform: scale(1.05);
+      }
+
+      &:active {
+        background-color: #2d3ea6;
+        transform: scale(1);
+      }
+
+      /* Style pour l'icône "+" */
+      &__icon {
+        font-size: 18px;
+        font-weight: bold;
+        margin-right: 10px;
+      }
+    }
+  }
+
+
   .staff-header {
     display: flex;
     align-items: center;

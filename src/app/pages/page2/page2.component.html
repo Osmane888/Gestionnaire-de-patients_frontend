@@ -1,4 +1,16 @@
 <div class="staff-content">
+  <div class="disposition" >
+    <div class="staff-header">
+      <img class="staff-icon" src="logo/staff.png" alt="Staff Icon">
+      <h2>{{ totalStaff }}</h2>
+      <p>Total Staff</p>
+    </div>
+    <div class="button-container">
+      <button class="add-patient-btn" (click)="addStaffModal.openModal()">
+        <i class="add-patient-btn__icon">+</i>
+        Add Staff
+      </button>
+    </div>
   <div class="staff-header">
     <img src="logo/staff.png" alt="Staff Icon">
     <h2>{{ totalStaff }}</h2>
@@ -33,3 +45,7 @@
     </div>
   </div>
 </div>
+
+<app-add-staff-modal
+  #addStaffModal (staffAdded)="addPatient($event)">
+</app-add-staff-modal>

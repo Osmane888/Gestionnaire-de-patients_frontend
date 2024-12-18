@@ -5,8 +5,9 @@ import {InformationModalComponent} from './modals/information-modal/information-
 import {SettingsModalComponent} from './modals/settings-modal/settings-modal.component';
 import {AddPatientModalComponent} from './modals/add-patient-modal/add-patient-modal.component';
 import {CalendarModalComponent} from './modals/calendar-modal/calendar-modal.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { FormErrorComponent } from './form-error/form-error.component';
+import { AddStaffModalComponent } from './modals/add-staff-modal/add-staff-modal.component';
 
 
 
@@ -18,16 +19,20 @@ import { FormErrorComponent } from './form-error/form-error.component';
     AddPatientModalComponent,
     CalendarModalComponent,
     FormErrorComponent,
+    AddStaffModalComponent,
   ],
   exports: [
     InformationModalComponent,
     SettingsModalComponent,
     CalendarModalComponent,
-    AdminModalComponent
+    AdminModalComponent,
+    AddPatientModalComponent,
+    AddStaffModalComponent
   ],
   imports: [
     CommonModule,
-    FormsModule
+    FormsModule,
+    ReactiveFormsModule
   ]
 })
 export class SharedModule { }

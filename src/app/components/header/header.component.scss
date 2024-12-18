@@ -58,6 +58,74 @@
       transform: scale(1.1); /* Légère agrandissement lors du survol */
     }
   }
+
+  /* Style de la Barre de Recherche */
+  .search-results {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 87%;
+    background: #ffffff;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    max-height: 400px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    z-index: 100;
+    animation: fadeIn 0.3s ease-in-out;
+  }
+
+  /* Animation d'Apparition */
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .search-results ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .search-result-item {
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #eee;
+    transition: background 0.3s ease, transform 0.1s ease;
+
+    &:last-child {
+      border-bottom: none;
+    }
+
+    &:hover {
+      background: #f0f4f8;
+      transform: scale(1.02);
+      cursor: pointer;
+    }
+
+    .patient-name {
+      font-weight: bold;
+      color: #333;
+      font-size: 16px;
+    }
+
+    .patient-email {
+      font-size: 14px;
+      color: #6c757d;
+      text-align: right;
+    }
+  }
+
 }
 
 .header__information {
@@ -121,3 +189,5 @@
     font-weight: normal;
   }
 }
+
+
