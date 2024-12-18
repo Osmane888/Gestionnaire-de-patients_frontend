@@ -1,4 +1,4 @@
-import { Component, HostListener, ElementRef } from '@angular/core';
+import {Component, HostListener, ElementRef, Output, EventEmitter} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { PatientService } from '../../features/patient/services/patientService';
 import {Professional} from '../../features/auth/forms/professional';
@@ -11,11 +11,11 @@ import {AuthService} from '../../features/auth/services/auth.service';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+  @Output() adminSettingsOpened = new EventEmitter<void>();
   searchQuery: string = '';
   searchResults: any[] = [];
   isSearchOpen = false;
   isInfoModalOpen = false;
-  isSettingsModalOpen = false;
   currentPro: ProfessionalToken | undefined;
 
   constructor(
@@ -66,10 +66,6 @@ export class HeaderComponent {
     this.searchResults = [];
     this.isSearchOpen = false;
   }
-  
-  logout(): void {
-    this.authService.logout();
-    }
 
   openInfoModal() {
     this.isInfoModalOpen = true;
@@ -80,15 +76,7 @@ export class HeaderComponent {
   }
 
   openSettingsModal() {
-    this.isSettingsModalOpen = true;
-  }
-
-  closeSettingsModal() {
-    this.isSettingsModalOpen = false;
-  }
-
-  handleLogout() {
-    console.log("Déconnexion réussie !");
-    this.isSettingsModalOpen = false;
+    console.log("Bouton de la Sidebar cliqué");
+    this.adminSettingsOpened.emit();
   }
 }
