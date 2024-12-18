@@ -1,29 +1,45 @@
-<div class="calendar-header">
-  <h2>Calendrier des consultations</h2>
-  <button class="add-consultation-btn" (click)="openModal()">+ Add Consultation</button>
-</div>
-
-<div class="calendar">
-  <div class="time-column">
-    <div *ngFor="let time of timeSlots" class="time-slot">{{ time }}</div>
+<div class="container">
+  <!-- Calendrier FullCalendar -->
+  <div class="full-calendar-container">
+    <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
 
-  <div class="days">
-    <div class="day-header" *ngFor="let day of days">{{ day }}</div>
-    <div
-      class="day-cell"
-      *ngFor="let cell of calendarCells; let i = index"
-      (click)="editCell(i)"
-    >
-      <div *ngIf="appointments[i]" class="appointment">
-        {{ appointments[i]?.patientName }}
-        <button class="delete-btn" (click)="deleteAppointment(i, $event)">✖</button>
-      </div>
+  <!-- Formulaire de Prise de Rendez-vous -->
+  <div class="form-container">
+    <form (ngSubmit)="addEvent()">
+      <h3>Ajouter un Rendez-vous</h3>
+
+      <label for="patientid">Patient ID :</label>
+      <input id="patientid" type="text" [(ngModel)]="newEvent.patientid" name="patientid" required>
+
+      <label for="dateRdv">Date de RDV :</label>
+      <input id="dateRdv" type="date" [(ngModel)]="newEvent.dateRdv" name="dateRdv" required>
+
+      <label for="hourRdv">Heure de Début :</label>
+      <input id="hourRdv" type="time" [(ngModel)]="newEvent.hourRdv" name="hourRdv" required>
+
+      <label for="durationRdv">Durée du RDV :</label>
+      <input id="durationRdv" type="time" [(ngModel)]="newEvent.durationRdv" name="durationRdv" required>
+
+      <label for="statusRdv">Statut du RDV :</label>
+      <input id="statusRdv" type="text" [(ngModel)]="newEvent.statusRdv" name="statusRdv" required>
+
+      <label for="rdvType">Type de RDV :</label>
+      <input id="rdvType" type="text" [(ngModel)]="newEvent.rdvType" name="rdvType" required>
+
+      <button type="submit">Ajouter</button>
+    </form>
+  </div>
+</div>
+
+<!-- Modal de confirmation personnalisé -->
+<div class="custom-modal" *ngIf="showModal">
+  <div class="modal-content">
+    <h3>Confirmer la suppression</h3>
+    <p>Êtes-vous sûr de vouloir supprimer cet événement ?</p>
+    <div class="modal-actions">
+      <button (click)="cancelDelete()">Annuler</button>
+      <button class="delete-btn" (click)="confirmDelete()">Supprimer</button>
     </div>
   </div>
 </div>
-
-<app-calendar-modal
-  #calendarModal
-  (appointmentAdded)="addAppointment($event)"
-></app-calendar-modal>

@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations'; // Animation requise par PrimeNG
 import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
+import { FullCalendarModule } from '@fullcalendar/angular'; // Import du module principal
 
 // Composants principaux
 import { AppComponent } from './app.component';
@@ -25,6 +26,7 @@ import {provideHttpClient, withInterceptors} from '@angular/common/http';
 import {LoginComponent} from './features/auth/pages/login/login.component';
 import {AuthModule} from "./features/auth/auth.module";
 import {jwtInterceptor} from './core/jwt.interceptor';
+import {AutoCompleteModule} from 'primeng/autocomplete';
 
 @NgModule({
     declarations: [
@@ -35,24 +37,26 @@ import {jwtInterceptor} from './core/jwt.interceptor';
         Page2Component,
         Page3Component,
     ],
-  imports: [
-    BrowserModule,
-    BrowserAnimationsModule,
-    AppRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
+    imports: [
+        BrowserModule,
+        BrowserAnimationsModule,
+        AppRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        FullCalendarModule,
 
-    // PrimeNG Modules
-    DialogModule,
-    ButtonModule,
-    InputTextModule,
-    TableModule,
-    ToastModule,
-    MessagesModule,
-    MessageModule,
-    SharedModule,
-    AuthModule
-  ],
+        // PrimeNG Modules
+        DialogModule,
+        ButtonModule,
+        InputTextModule,
+        TableModule,
+        ToastModule,
+        MessagesModule,
+        MessageModule,
+        SharedModule,
+        AutoCompleteModule,
+        AuthModule
+    ],
     providers: [
         provideHttpClient(
           withInterceptors([jwtInterceptor])
