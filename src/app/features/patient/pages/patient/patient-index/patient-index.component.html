@@ -1,4 +1,6 @@
 <!-- Bouton pour ouvrir la modal -->
+@if(infoBasicPatients){
+
 <div class="disposition" >
   <div class="patient-header">
     <img class="patient-icon" src="logo/person.png" alt="Patients Icon">
@@ -46,15 +48,17 @@
 
 <!-- Modal de confirmation de suppression -->
 <div *ngIf="showModal" class="confirmation-modal">
+  @if(selectedPatient){
   <div class="modal-content">
     <h3>Confirmer la suppression</h3>
-    <p>Êtes-vous sûr de vouloir supprimer <strong>{{ selectedPatient?.firstname }} {{ selectedPatient?.lastname }}</strong> ?</p>
+    <p>Êtes-vous sûr de vouloir supprimer <strong>{{ selectedPatient.firstname }} {{ selectedPatient.lastname }}</strong> ?</p>
 
     <div class="modal-actions">
       <button class="confirm-btn" (click)="deletePatient()">Oui, supprimer</button>
       <button class="cancel-btn" (click)="cancelDelete()">Annuler</button>
     </div>
   </div>
+  }
 </div>
 
 <!-- Composant modal-->
@@ -62,3 +66,4 @@
   #addPatientModal
   (patientAdded)="addPatient($event)">
 </app-add-patient-modal>
+}

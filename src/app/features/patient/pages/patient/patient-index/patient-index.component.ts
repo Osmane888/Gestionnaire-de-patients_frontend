@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import {PatientService} from '../../../services/patientService';
 import {BasicInfosPatient} from '../../../models/patients.BasicInfos';
 import {PatientsTotalInfos} from '../../../models/patients.TotalInfos';
+import {environment} from "../../../../../shared/environment/environment";
 
 @Component({
   selector: 'app-patient-index',
@@ -18,7 +19,7 @@ export class PatientIndexComponent {
   constructor(
     public _patientService: PatientService
   ) {
-    this.getPatients('http://localhost:8082/patients')
+    this.getPatients(environment.apiUrl + '/patients')
   }
 
   getPatients(url: string): void {
