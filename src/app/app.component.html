@@ -7,7 +7,7 @@
   <div class="main-content">
     <!-- Header -->
     <div class="header">
-      <app-header></app-header>
+      <app-header (adminSettingsOpened)="openSettingsModal()"></app-header>
     </div>
 
     <!-- Page content -->
@@ -18,6 +18,11 @@
 
   <!-- Admin Modal -->
   <app-admin-modal *ngIf="isModalOpen" (closeModal)="closeAdminModal()"></app-admin-modal>
+  <app-settings-modal
+    *ngIf="isSettingsModalOpen"
+    (closeModal)="closeSettingsModal()"
+    (logout)="logout()">
+  </app-settings-modal>
 </div>
 
 <!-- Template pour la page login -->

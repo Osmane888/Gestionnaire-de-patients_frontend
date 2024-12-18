@@ -10,6 +10,7 @@ import {AuthService} from './features/auth/services/auth.service';
 export class AppComponent {
   isModalOpen = false;
   isLoginPage = false;
+  isSettingsModalOpen = false;
 
 
   openAdminModal() {
@@ -34,6 +35,17 @@ export class AppComponent {
     });
   }
 
+  logout(): void {
+    this.authService.logout();
+  }
+
+  openSettingsModal() {
+    this.isSettingsModalOpen = true;
+  }
+
+  closeSettingsModal() {
+    this.isSettingsModalOpen = false;
+  }
 
   protected readonly localStorage = localStorage;
 }
