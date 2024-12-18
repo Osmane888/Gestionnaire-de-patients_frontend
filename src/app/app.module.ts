@@ -21,7 +21,6 @@ import { ToastModule } from 'primeng/toast';
 import { MessagesModule } from 'primeng/messages';
 import { MessageModule } from 'primeng/message';
 import { Page3Component } from './pages/page3/page3.component';
-import { LoginComponent } from './pages/login/login.component';
 import {SharedModule} from './shared/shared.module';
 import {provideHttpClient} from '@angular/common/http';
 import {AutoCompleteModule} from 'primeng/autocomplete';
@@ -33,7 +32,6 @@ import {AutoCompleteModule} from 'primeng/autocomplete';
         SidebarComponent,
         Page2Component,
         Page3Component,
-        LoginComponent,
     ],
     imports: [
         BrowserModule,
