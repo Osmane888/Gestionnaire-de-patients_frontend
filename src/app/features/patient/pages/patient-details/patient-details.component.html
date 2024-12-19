@@ -1,0 +1,54 @@
+<!--@if (infosTotalPatients){-->
+<!--<h2>Infos complètes patient</h2>-->
+<!--<h3>Nom : {{infosTotalPatients.firstname}}</h3>-->
+<!--<h3>Prénom : {{infosTotalPatients.lastname}}</h3>-->
+<!--<p>Date de naissance : {{infosTotalPatients.birthdate}}</p>-->
+<!--<p>Email : {{infosTotalPatients.email}}</p>-->
+<!--<p>Adresse : {{infosTotalPatients.address}}</p>-->
+<!--<p>Mutuelle : {{infosTotalPatients.mutuelle}}</p>-->
+<!--<p>Numéro de tel : {{infosTotalPatients.phoneNumber}}</p>-->
+<!--<p>Info supp : {{infosTotalPatients.info_supplement}}</p>-->
+<!--<button><a routerLink="/index">Retour</a></button>-->
+<!--}-->
+
+<div *ngIf="infosTotalPatients" class="patient-details">
+<h2>{{ infosTotalPatients.firstname }} {{infosTotalPatients.lastname}}</h2>
+  <p><strong>Date de naissance : </strong>{{ infosTotalPatients.birthDate}}</p>
+  <p><strong>Email : </strong>{{infosTotalPatients.email}}</p>
+  <p><strong>Adresse : </strong>{{infosTotalPatients.address.city}} {{infosTotalPatients.address.street}} {{infosTotalPatients.address.streetNumber}} {{infosTotalPatients.address.zipCode}}</p>
+  <p><strong>Mutuelle : </strong>{{infosTotalPatients.mutuelle}}</p>
+  <p><strong>Numéro de tel : </strong>{{infosTotalPatients.phoneNumber}}</p>
+  <p><strong>Info supp : </strong>{{infosTotalPatients.info_supplement}}</p>
+</div>
+<!--<p><strong>Registered:</strong> {{ patient.registered }}</p>-->
+<!--<p><strong>Last Treatment:</strong> {{ patient.lastTreatment }}</p>-->
+
+<!--<button (click)="enableEdit()">Edit</button>-->
+
+<!--&lt;!&ndash; Formulaire d'édition &ndash;&gt;-->
+<!--<form *ngIf="isEditing" (ngSubmit)="confirmUpdatePatient()">-->
+<!--  <label>-->
+<!--    Phone:-->
+<!--    <input type="text" [(ngModel)]="patient.phone" name="phone" required />-->
+<!--  </label>-->
+<!--  <label>-->
+<!--    Email:-->
+<!--    <input type="email" [(ngModel)]="patient.email" name="email" required />-->
+<!--  </label>-->
+<!--  <label>-->
+<!--    Address:-->
+<!--    <input type="text" [(ngModel)]="patient.address" name="address" required />-->
+<!--  </label>-->
+<!--  <label>-->
+<!--    Mutuel:-->
+<!--    <input type="text" [(ngModel)]="patient.mutuel" name="mutuel" required />-->
+<!--  </label>-->
+<!--  <label>-->
+<!--    Last Treatment:-->
+<!--    <input type="date" [(ngModel)]="patient.lastTreatment" name="lastTreatment" required />-->
+<!--  </label>-->
+
+<!--  <button type="submit">Save</button>-->
+<!--  <button type="button" (click)="cancelEdit()">Cancel</button>-->
+<!--</form>-->
+

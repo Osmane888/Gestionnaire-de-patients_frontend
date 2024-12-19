@@ -1,0 +1,37 @@
+<h1>Page création patient</h1>
+
+<form [formGroup]="patientForm" (ngSubmit)="submit()">
+  <div>
+    <label for="lastname">Nom de famille : </label>
+    <input id="lastname" type="text" placeholder="Nom de famille" formControlName="lastname" required>
+  </div>
+  <div>
+    <label for="firstname">Prénom : </label>
+    <input id="firstname" type="text" placeholder="Prénom" formControlName="firstname" required>
+  </div>
+  <div>
+    <label for="email">Email : </label>
+    <input id="email" type="email" placeholder="Email" formControlName="email">
+  </div>
+  <div>
+    <label for="phoneNumber">Numéro de téléphone : </label>
+    <input id="phoneNumber" type="text" placeholder="Numéro de téléphone" formControlName="phoneNumber">
+  </div>
+  <div>
+    <label for="birthDate">Date de naissance : </label>
+    <input id="birthDate" type="date" formControlName="birthDate" required>
+  </div>
+  <div>
+    <label for="mutuelle">Mutuelle : </label>
+    <input id="mutuelle" type="text" placeholder="Mutuelle" formControlName="mutuelle">
+  </div>
+  <div>
+    <label for="info_supplement">Informations supplémentaires : </label>
+    <textarea id="info_supplement" placeholder="Informations supplémentaires" formControlName="info_supplement"></textarea>
+  </div>
+  <div>
+    <label for="address">Adresse : </label>
+    <input id="address" type="text" placeholder="Adresse" formControlName="address">
+  </div>
+  <button class="blue">Créer</button>
+</form>

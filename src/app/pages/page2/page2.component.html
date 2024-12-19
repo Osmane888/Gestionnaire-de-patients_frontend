@@ -6,7 +6,7 @@
       <p>Total Staff</p>
     </div>
     <div class="button-container">
-      <button class="add-patient-btn" (click)="addStaffModal.openModal()">
+      <button class="add-patient-btn" (click)="openModal(addStaffModal)">
         <i class="add-patient-btn__icon">+</i>
         Add Staff
       </button>
@@ -14,14 +14,14 @@
   </div>
 
   <div class="staff-container">
-    <div class="staff-card" *ngFor="let staff of staffMembers">
+    <div class="staff-card" *ngFor="let staff of professionals">
       <div class="staff-icon">
         <img src="logo/user-logo.png" alt="User Icon" />
       </div>
       <div class="staff-info">
-        <h3>{{ staff.name }}</h3>
-        <p>{{ staff.email }}</p>
-        <p>{{ staff.role }}</p>
+        <h3>{{ staff.firstName }}</h3>
+          <h3>{{ staff.lastName }}</h3>
+          <p>{{  staff.role }}</p>
       </div>
       <button class="delete-btn" (click)="confirmDelete(staff)">Supprimer utilisateur</button>
     </div>
@@ -40,5 +40,5 @@
 </div>
 
 <app-add-staff-modal
-  #addStaffModal (staffAdded)="addPatient($event)">
+  #addStaffModal (staffAdded)="loadProfessionals()">
 </app-add-staff-modal>

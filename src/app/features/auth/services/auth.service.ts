@@ -3,10 +3,12 @@ import {environment} from '../../../shared/environment/environment';
 import {HttpClient} from '@angular/common/http';
 import {LoginForm} from '../models/LoginForm';
 import {BehaviorSubject, Observable, tap} from 'rxjs';
-import {UserTokenDTO} from '../models/UserTokenDTO';
 import {RegisterForm} from '../models/RegisterForm';
 import {ProfessionalToken} from '../forms/professionalToken';
 import {Router} from '@angular/router';
+import {ProfessionalsDTO} from '../../../pages/models/professionalsDTO';
+import {AddStaffForm} from '../../../pages/models/addStaffForm';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -44,14 +46,21 @@ export class AuthService {
     );
   }
 
-  register(form: RegisterForm): Observable<void>{
-    return this._http.post<void>(environment.apiUrl + '/register', form);
-    console.log("Formulaire soumis");
+  register(form: AddStaffForm): Observable<AddStaffForm>{
+    return this._http.post<AddStaffForm>(environment.apiUrl + '/register', form);
   }
 
   logout(): void{
     localStorage.removeItem('professionelToken');
     this._professionalInfoSubject$.next(undefined);
     this._router.navigate(['/auth/login']);
+  }
+
+  getAllProfessionals(): Observable<ProfessionalsDTO[]>{
+    return this._http.get<ProfessionalsDTO[]>(environment.apiUrl + '/professionals');
+  }
+
+  deleteProfessional(id: string): Observable<void>{
+    return this._http.delete<void>(`${environment.apiUrl}/professionals/${id}`);
   }
 }

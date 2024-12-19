@@ -9,7 +9,6 @@ export const jwtInterceptor: HttpInterceptorFn = (req, next) => {
   let professional: ProfessionalToken|undefined = authService.professionalInfo;
   if(professional) {
     let token = professional.token;
-    console.log(token)
     if(token) {
       if(token !== ''){
         let requestClone = req.clone({
