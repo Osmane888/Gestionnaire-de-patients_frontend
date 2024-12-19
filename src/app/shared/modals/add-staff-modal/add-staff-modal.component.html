@@ -1,46 +1,50 @@
-@if(isModalOpen){
-<div class="modal" [class.modal--active]="isModalOpen">
-  <div class="modal__content">
-    <h2>Add a new patient</h2>
-    <form [formGroup]="newStaffForm" (ngSubmit)="addStaff()">
-      <div>
-        <label for="firstName">Prénom :</label>
-        <input id="firstName" type="text" formControlName="firstName" />
-      </div>
-      <div>
-        <label for="lastName">Nom de famille :</label>
-        <input id="lastName" type="text" formControlName="lastName" />
-      </div>
-      <div>
-        <label for="email">Email :</label>
-        <input id="email" type="text" formControlName="email" />
-      </div>
-      <div>
-        <label for="phoneNumber">Numéro de téléphone :</label>
-        <input id="phoneNumber" type="text" formControlName="phoneNumber" />
-      </div>
-      <div>
-        <label for="licenseNumber">Numéro de license :</label>
-        <input id="licenseNumber" type="text" formControlName="licenseNumber" />
-      </div>
-      <div>
-        <label for="role">Role :</label>
-        <input id="role" type="text" formControlName="role" />
-      </div>
-      <div>
-        <label for="specialization">Spécialisation :</label>
-        <input id="specialization" type="text" formControlName="specialization" />
-      </div>
-      <div>
-        <label for="password">Mot de Passe :</label>
-        <input id="password" type="password" formControlName="password" />
-      </div>
+@if(isModalOpen) {
+  <div class="modal" [class.modal--active]="isModalOpen">
+    <div class="modal__content">
+      <h2>Add a new staff member</h2>
+      <form [formGroup]="newStaffForm" (ngSubmit)="addStaff()">
+        <div>
+          <label for="firstName">First Name:</label>
+          <input id="firstName" type="text" formControlName="firstName" />
+        </div>
+        <div>
+          <label for="lastName">Last Name:</label>
+          <input id="lastName" type="text" formControlName="lastName" />
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input id="email" type="text" formControlName="email" />
+        </div>
+        <div>
+          <label for="phoneNumber">Phone Number:</label>
+          <input id="phoneNumber" type="text" formControlName="phoneNumber" />
+        </div>
+        <div>
+          <label for="licenseNumber">License Number:</label>
+          <input id="licenseNumber" type="text" formControlName="licenseNumber" />
+        </div>
+        <div>
+          <label for="role">Role :</label>
+          <select id="role" formControlName="role">
+            <option value="PERSONNEL_MEDICAL">Medical Staff</option>
+            <option value="PERSONNEL_ADMINISTRATIF">Administrative Staff</option>
+            <option value="ADMINISTRATEUR">Administrator</option>
+          </select>
+        </div>
+        <div>
+          <label for="specialization">Specialization:</label>
+          <input id="specialization" type="text" formControlName="specialization" />
+        </div>
+        <div>
+          <label for="password">Password:</label>
+          <input id="password" type="password" formControlName="password" />
+        </div>
 
-      <div class="modal__actions">
-        <button type="submit">Add</button>
-        <button type="button" (click)="closeModal()">Cancel</button>
-      </div>
-    </form>
+        <div class="modal__actions">
+          <button type="submit">Add</button>
+          <button type="button" (click)="closeModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
   </div>
-</div>
 }

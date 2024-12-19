@@ -1,30 +1,29 @@
 <div *ngIf="infosTotalPatients" class="patient-details">
 
-
   <div class="details-grid">
-    <p><strong>Nom :</strong> {{ infosTotalPatients.lastName }}</p>
-    <p><strong>Prénom :</strong> {{ infosTotalPatients.firstName }}</p>
-    <p><strong>Date de naissance :</strong> {{ infosTotalPatients.birthDate | date:'longDate' }}</p>
-    <p><strong>Email :</strong> {{ infosTotalPatients.email }}</p>
-    <p><strong>Téléphone :</strong> {{ infosTotalPatients.phoneNumber }}</p>
-    <p><strong>Mutuelle :</strong> {{ infosTotalPatients.mutuelle }}</p>
-    <p><strong>Adresse :</strong>
+    <p><strong>Last Name:</strong> {{ infosTotalPatients.lastName }}</p>
+    <p><strong>First Name:</strong> {{ infosTotalPatients.firstName }}</p>
+    <p><strong>Date of Birth:</strong> {{ infosTotalPatients.birthDate | date:'longDate' }}</p>
+    <p><strong>Email:</strong> {{ infosTotalPatients.email }}</p>
+    <p><strong>Phone Number:</strong> {{ infosTotalPatients.phoneNumber }}</p>
+    <p><strong>Insurance:</strong> {{ infosTotalPatients.mutuelle }}</p>
+    <p><strong>Address:</strong>
       {{ infosTotalPatients.address.street }} {{ infosTotalPatients.address.streetNumber }},
       {{ infosTotalPatients.address.city }} {{ infosTotalPatients.address.zipCode }}
     </p>
-    <p><strong>Informations supplémentaires :</strong> {{ infosTotalPatients.info_supplement }}</p>
+    <p><strong>Additional Information:</strong> {{ infosTotalPatients.info_supplement }}</p>
   </div>
 
-  <button class="edit-btn" (click)="enableEdit()" *ngIf="!isEditing">Modifier</button>
+  <button class="edit-btn" (click)="enableEdit()" *ngIf="!isEditing">Edit</button>
 
   <form #form="ngForm" *ngIf="isEditing" (ngSubmit)="confirmUpdatePatient()" class="edit-form">
     <div class="form-group">
-      <label>Prénom:</label>
+      <label>First Name:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.firstName" name="firstName" required />
     </div>
 
     <div class="form-group">
-      <label>Nom:</label>
+      <label>Last Name:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.lastName" name="lastName" required />
     </div>
 
@@ -34,46 +33,46 @@
     </div>
 
     <div class="form-group">
-      <label>Téléphone:</label>
+      <label>Phone Number:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.phoneNumber" name="phoneNumber" required />
     </div>
 
     <div class="form-group">
-      <label>Date de naissance:</label>
+      <label>Date of Birth:</label>
       <input type="date" [(ngModel)]="infosTotalPatients.birthDate" name="birthDate" required />
     </div>
 
     <div class="form-group">
-      <label>Mutuelle:</label>
+      <label>Insurance:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.mutuelle" name="mutuelle" required />
     </div>
 
     <div class="form-group">
-      <label>Adresse:</label>
+      <label>Street:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.address.street" name="address.street" required />
     </div>
 
     <div class="form-group">
-      <label>Numéro de rue:</label>
+      <label>Street Number:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.address.streetNumber" name="address.streetNumber" required />
     </div>
 
     <div class="form-group">
-      <label>Ville:</label>
+      <label>City:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.address.city" name="address.city" required />
     </div>
 
     <div class="form-group">
-      <label>Code Postal:</label>
+      <label>Zip Code:</label>
       <input type="text" [(ngModel)]="infosTotalPatients.address.zipCode" name="address.zipCode" required />
     </div>
 
     <div class="form-group">
-      <label>Informations supplémentaires:</label>
+      <label>Additional Information:</label>
       <textarea [(ngModel)]="infosTotalPatients.info_supplement" name="info_supplement"></textarea>
     </div>
 
-    <button class="save-btn" type="submit" [disabled]="form.invalid">Sauvegarder</button>
-    <button class="cancel-btn" type="button" (click)="cancelEdit()">Annuler</button>
+    <button class="save-btn" type="submit" [disabled]="form.invalid">Save</button>
+    <button class="cancel-btn" type="button" (click)="cancelEdit()">Cancel</button>
   </form>
 </div>

@@ -124,6 +124,8 @@ export class Page3Component implements OnInit {
 
   filterPatients(event: AutoCompleteCompleteEvent) {
 
+    console.log(this.filteredPatients)
+
     let query = event.query.toLowerCase();
 
     this.filteredPatients = this.patients?.filter(p => p.fullname.toLowerCase().includes(query));

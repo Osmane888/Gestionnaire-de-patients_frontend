@@ -1,63 +1,62 @@
 <div class="modal" [class.modal--active]="isModalOpen">
   <div class="modal__content">
-    <h2>Créer un nouveau patient</h2>
+    <h2>Create a New Patient</h2>
     <form [formGroup]="patientForm" (ngSubmit)="submit()">
       <div>
-        <label for="lastName">Nom de famille :</label>
+        <label for="lastName">Last Name:</label>
         <input id="lastName" type="text" formControlName="lastName" />
       </div>
 
       <div>
-        <label for="firstName">Prénom :</label>
+        <label for="firstName">First Name:</label>
         <input id="firstName" type="text" formControlName="firstName" />
       </div>
 
       <div>
-        <label for="email">Email :</label>
+        <label for="email">Email:</label>
         <input id="email" type="email" formControlName="email" />
       </div>
 
       <div>
-        <label for="phoneNumber">Téléphone :</label>
+        <label for="phoneNumber">Phone Number:</label>
         <input id="phoneNumber" type="text" formControlName="phoneNumber" />
       </div>
 
       <div>
-        <label for="birthDate">Date de naissance :</label>
+        <label for="birthDate">Date of Birth:</label>
         <input id="birthDate" type="date" formControlName="birthDate" />
       </div>
 
       <div>
-        <label for="mutuelle">Mutuelle :</label>
-        <input id="mutuelle" type="text" formControlName="mutuelle" />
+        <label for="insurance">Insurance:</label>
+        <input id="insurance" type="text" formControlName="mutuelle" />
       </div>
 
       <div>
-        <label for="info_supplement">Informations supplémentaires :</label>
-        <textarea id="info_supplement" formControlName="info_supplement"></textarea>
+        <label for="additionalInfo">Additional Information:</label>
+        <textarea id="additionalInfo" formControlName="info_supplement"></textarea>
       </div>
 
       <fieldset formGroupName="address">
-        <legend>Adresse</legend>
+        <legend>Address</legend>
 
-        <label for="street">Rue :</label>
+        <label for="street">Street:</label>
         <input id="street" type="text" formControlName="street" />
 
-        <label for="city">Ville :</label>
+        <label for="city">City:</label>
         <input id="city" type="text" formControlName="city" />
 
-        <label for="streetNumber">Numéro de rue :</label>
+        <label for="streetNumber">Street Number:</label>
         <input id="streetNumber" type="text" formControlName="streetNumber" />
 
-        <label for="zipCode">Code postal :</label>
+        <label for="zipCode">Zip Code:</label>
         <input id="zipCode" type="text" formControlName="zipCode" />
       </fieldset>
 
       <div class="modal__actions">
-        <button type="submit">Créer</button>
-        <button type="button" (click)="closeModal()">Annuler</button>
+        <button type="submit">Create</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
       </div>
     </form>
   </div>
 </div>
-

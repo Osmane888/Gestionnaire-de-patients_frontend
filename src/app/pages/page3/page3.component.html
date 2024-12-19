@@ -1,57 +1,54 @@
 <div class="container">
-  <!-- Calendrier FullCalendar -->
+  <!-- FullCalendar -->
   <div class="full-calendar-container">
     <full-calendar [options]="calendarOptions"></full-calendar>
   </div>
 
-  <!-- Formulaire de Prise de Rendez-vous -->
+  <!-- Appointment Booking Form -->
   <div class="form-container">
     <form (ngSubmit)="addEvent()" [formGroup]="newEvent">
-      <h3>Ajouter un Rendez-vous</h3>
+      <h3>Add Appointment</h3>
 
-      <label>Patient :</label>
+      <label>Patient:</label>
       <p-autoComplete size="51"
-        formControlName="patientid"
-        [suggestions]="filteredPatients!"
-        (completeMethod)="filterPatients($event)"
-        optionValue="id"
-        optionLabel="fullname"/>
+                      formControlName="patientid"
+                      [suggestions]="filteredPatients!"
+                      (completeMethod)="filterPatients($event)"
+                      optionValue="id"
+                      optionLabel="fullname"/>
 
-
-      <label for="dateRdv">Date de RDV :</label>
+      <label for="dateRdv">Appointment Date:</label>
       <input id="dateRdv" type="date" formControlName="dateRdv" required>
 
-      <label for="hourRdv">Heure de Début :</label>
+      <label for="hourRdv">Start Time:</label>
       <input id="hourRdv" type="time" formControlName="hourRdv" required>
 
-      <label for="durationRdv">Heure fin du RDV :</label>
+      <label for="durationRdv">End Time:</label>
       <input id="durationRdv" type="time" formControlName="durationRdv" required>
 
-      <label for="statusRdv">Statut du RDV :</label>
+      <label for="statusRdv">Appointment Status:</label>
       <select id="statusRdv" formControlName="statusRdv" required>
         <option value="CANCELLED">CANCELLED</option>
         <option value="CONFIRMED">CONFIRMED</option>
         <option value="FINISHED">FINISHED</option>
       </select>
 
-
-
-      <label for="rdvType">Description du RDV :</label>
+      <label for="rdvType">Appointment Description:</label>
       <input id="rdvType" type="text" formControlName="rdvType" required>
 
-      <button type="submit">Ajouter</button>
+      <button type="submit">Add</button>
     </form>
   </div>
 </div>
 
-<!-- Modal de confirmation personnalisé -->
+<!-- Custom Confirmation Modal -->
 <div class="custom-modal" *ngIf="showModal">
   <div class="modal-content">
-    <h3>Confirmer la suppression</h3>
-    <p>Êtes-vous sûr de vouloir supprimer cet événement ?</p>
+    <h3>Confirm Deletion</h3>
+    <p>Are you sure you want to delete this event?</p>
     <div class="modal-actions">
-      <button (click)="cancelDelete()">Annuler</button>
-      <button class="delete-btn" (click)="confirmDelete()">Supprimer</button>
+      <button (click)="cancelDelete()">Cancel</button>
+      <button class="delete-btn" (click)="confirmDelete()">Delete</button>
     </div>
   </div>
 </div>

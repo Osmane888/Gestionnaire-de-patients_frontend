@@ -25,7 +25,7 @@ export class AddStaffModalComponent {
       email: ['', Validators.required],
       phoneNumber: ['', Validators.required],
       licenseNumber: ['', Validators.required],
-      role: [''],
+      role: ['', Validators.required],
       specialization: ['', Validators.required],
       password: ['', Validators.required],
     })
