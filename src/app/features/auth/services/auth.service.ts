@@ -7,7 +7,8 @@ import {RegisterForm} from '../models/RegisterForm';
 import {ProfessionalToken} from '../forms/professionalToken';
 import {Router} from '@angular/router';
 import {ProfessionalsDTO} from '../../../pages/models/professionalsDTO';
-import {AddStaffDTO} from '../../../pages/models/addStaffDTO';
+import {AddStaffForm} from '../../../pages/models/addStaffForm';
+import {FormGroup} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -45,9 +46,8 @@ export class AuthService {
     );
   }
 
-  register(form: AddStaffDTO): Observable<Object>{
-    return this._http.post(environment.apiUrl + '/register', form);
-    console.log("Formulaire soumis");
+  register(form: AddStaffForm): Observable<AddStaffForm>{
+    return this._http.post<AddStaffForm>(environment.apiUrl + '/register', form);
   }
 
   logout(): void{

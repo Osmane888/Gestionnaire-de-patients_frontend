@@ -1,4 +1,7 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {AuthService} from '../../../features/auth/services/auth.service';
+import {AddStaffForm} from '../../../pages/models/addStaffForm';
 
 @Component({
   selector: 'app-add-staff-modal',
@@ -8,19 +11,25 @@ import {Component, EventEmitter, Output} from '@angular/core';
 export class AddStaffModalComponent {
 
   isModalOpen = false;
+  newStaffForm: FormGroup;
 
   @Output() staffAdded = new EventEmitter<any>(); // Événement pour notifier le composant parent
 
-  newStaff = {
-    firstName: '',
-    lastName: '',
-    email: '',
-    phoneNumber: '',
-    licenseNumber: '',
-    role: '',
-    specialization: '',
-    password: '',
-  };
+  constructor(
+    private readonly fb: FormBuilder,
+    private readonly authService: AuthService
+  ) {
+    this.newStaffForm = this.fb.group({
+      firstName: ['', Validators.required],
+      lastName: ['', Validators.required],
+      email: ['', Validators.required],
+      phoneNumber: ['', Validators.required],
+      licenseNumber: ['', Validators.required],
+      role: [''],
+      specialization: ['', Validators.required],
+      password: ['', Validators.required],
+    })
+  }
 
   openModal() {
     this.isModalOpen = true;
@@ -29,24 +38,24 @@ export class AddStaffModalComponent {
   closeModal() {
     this.isModalOpen = false;
     this.resetForm();
-  }
-
-  addStaff() {
-    this.staffAdded.emit(this.newStaff);
-    this.closeModal();
+    console.log(this.newStaffForm)
   }
 
   resetForm() {
-    this.newStaff = {
-      firstName: '',
-      lastName: '',
-      email: '',
-      phoneNumber: '',
-      licenseNumber: '',
-      role: '',
-      specialization: '',
-      password: ''
-    };
+    this.newStaffForm.reset();
+  }
+
+  addStaff(): void {
+    this.authService.register(this.newStaffForm.value).subscribe({
+      next:(response: any) => {
+        console.log('Professionel ajouté avec succès');
+        this.staffAdded.emit(response);
+        this.closeModal()
+      },
+      error:(error)=>{
+        console.error('Erreur lors de l\'insertion d\'un professionel')
+      }
+    })
   }
 
 }

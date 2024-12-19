@@ -1,4 +1,4 @@
-export interface AddStaffDTO{
+export interface AddStaffForm {
   firstName: string;
   lastName: string;
   email: string;

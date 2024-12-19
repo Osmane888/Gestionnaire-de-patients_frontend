@@ -3,7 +3,7 @@ import {Professional} from "../../features/auth/forms/professional";
 import {AuthService} from "../../features/auth/services/auth.service";
 import {UserTokenDTO} from "../../features/auth/models/UserTokenDTO";
 import {ProfessionalsDTO} from "../models/professionalsDTO";
-import {AddStaffDTO} from '../models/addStaffDTO';
+import {AddStaffForm} from '../models/addStaffForm';
 
 @Component({
   selector: 'app-page2',
@@ -64,18 +64,6 @@ export class Page2Component {
 
   openModal(addStaffModal: any) {
     addStaffModal.openModal();
-  }
-
-  addStaff(newStaff: AddStaffDTO): void {
-    this._authService.register(newStaff).subscribe({
-      next:(response: any) => {
-        console.log('Professionel ajouté avec succès');
-        this.loadProfessionals();
-      },
-      error:(error)=>{
-        console.error('Erreur lors de l\'insertion d\'un professionel')
-      }
-    })
   }
 
 }
