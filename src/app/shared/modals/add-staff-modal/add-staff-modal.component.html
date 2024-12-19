@@ -1,3 +1,4 @@
+@if(isModalOpen){
 <div class="modal" [class.modal--active]="isModalOpen">
   <div class="modal__content">
     <h2>Add a new patient</h2>
@@ -5,6 +6,7 @@
       <div>
         <label for="firstName">Prénom :</label>
         <input id="firstName" type="text" formControlName="firstName" />
+        <app-form-error [control]="newStaffForm.get('firstName')"></app-form-error>
       </div>
       <div>
         <label for="lastName">Nom de famille :</label>
@@ -24,7 +26,11 @@
       </div>
       <div>
         <label for="role">Role :</label>
-        <input id="role" type="text" formControlName="role" />
+        <select id="role" formControlName="role">
+          <option value="PERSONNEL_MEDICAL">Personnel Médical</option>
+          <option value="PERSONNEL_ADMINISTRATIF">Personnel Administratif</option>
+          <option value="ADMINISTRATEUR">Administrateur</option>
+        </select>
       </div>
       <div>
         <label for="specialization">Spécialisation :</label>
@@ -37,8 +43,9 @@
 
       <div class="modal__actions">
         <button type="submit">Add</button>
-        <button type="button">Cancel</button>
+        <button type="button" (click)="closeModal()">Cancel</button>
       </div>
     </form>
   </div>
 </div>
+}

@@ -20,14 +20,14 @@ export class AddStaffModalComponent {
     private readonly authService: AuthService
   ) {
     this.newStaffForm = this.fb.group({
-      firstName: ['', Validators.required],
-      lastName: ['', Validators.required],
-      email: ['', Validators.required],
-      phoneNumber: ['', Validators.required],
-      licenseNumber: ['', Validators.required],
-      role: [''],
-      specialization: ['', Validators.required],
-      password: ['', Validators.required],
+      firstName: ['', [Validators.required]],
+      lastName: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      phoneNumber: [''],
+      licenseNumber: [''],
+      role: ['', [Validators.required]],
+      specialization: [''],
+      password: ['', [Validators.required]],
     })
   }
 
@@ -46,6 +46,12 @@ export class AddStaffModalComponent {
   }
 
   addStaff(): void {
+
+    if(this.newStaffForm.invalid){
+      this.newStaffForm.markAsTouched();
+      return;
+    }
+
     this.authService.register(this.newStaffForm.value).subscribe({
       next:(response: any) => {
         console.log('Professionel ajouté avec succès');
