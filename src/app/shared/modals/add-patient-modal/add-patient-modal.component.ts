@@ -21,10 +21,10 @@ export class AddPatientModalComponent {
     this.patientForm = this.fb.group({
       lastName: ['', Validators.required],
       firstName: ['', Validators.required],
-      email: ['', [Validators.required, Validators.email]],
-      phoneNumber: ['', Validators.required],
+      email: ['', Validators.email],
+      phoneNumber: [''],
       birthDate: ['', Validators.required],
-      mutuelle: ['', Validators.required],
+      mutuelle: [''],
       info_supplement: [''],
       address: this.fb.group({
         street: ['', Validators.required],
