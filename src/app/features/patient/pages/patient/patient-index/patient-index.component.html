@@ -47,19 +47,20 @@
 </div>
 
 <!-- Modal de confirmation de suppression -->
-<div *ngIf="showModal" class="confirmation-modal">
-  @if(selectedPatient){
-  <div class="modal-content">
-    <h3>Confirmer la suppression</h3>
-    <p>Êtes-vous sûr de vouloir supprimer <strong>{{ selectedPatient.firstname }} {{ selectedPatient.lastname }}</strong> ?</p>
+  <div *ngIf="showModal" class="confirmation-modal">
+    @if(selectedPatient){
+      <div class="modal-content">
+        <h3>Confirm Deletion</h3>
+        <p>Are you sure you want to delete <strong>{{ selectedPatient.firstname }} {{ selectedPatient.lastname }}</strong>?</p>
 
-    <div class="modal-actions">
-      <button class="confirm-btn" (click)="deletePatient()">Oui, supprimer</button>
-      <button class="cancel-btn" (click)="cancelDelete()">Annuler</button>
-    </div>
+        <div class="modal-actions">
+          <button class="confirm-btn" (click)="deletePatient()">Yes, delete</button>
+          <button class="cancel-btn" (click)="cancelDelete()">Cancel</button>
+        </div>
+      </div>
+    }
   </div>
-  }
-</div>
+
 
 <!-- Composant modal-->
 <app-add-patient-modal

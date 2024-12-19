@@ -30,14 +30,14 @@
   <!-- Confirmation Modal -->
   <div *ngIf="selectedStaff" class="confirmation-modal">
     <div class="modal-content">
-      <h3>Êtes-vous sûr de vouloir supprimer {{ selectedStaff.name }} ?</h3>
+      <h3>Are you sure you want to delete {{ selectedStaff.name }}?</h3>
       <div class="modal-actions">
-        <button class="confirm-btn" (click)="deleteStaff(selectedStaff.id)">Oui</button>
-        <button class="cancel-btn" (click)="cancelDelete()">Non</button>
+        <button class="confirm-btn" (click)="deleteStaff(selectedStaff.id)">Yes</button>
+        <button class="cancel-btn" (click)="cancelDelete()">No</button>
       </div>
     </div>
   </div>
-</div>
+
 
 <app-add-staff-modal
   #addStaffModal (staffAdded)="loadProfessionals()">
