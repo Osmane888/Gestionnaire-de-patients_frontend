@@ -9,14 +9,13 @@
     <form (ngSubmit)="addEvent()" [formGroup]="newEvent">
       <h3>Ajouter un Rendez-vous</h3>
 
-      <label>Patient :</label>
-      <p-autoComplete
+      <label >Patient :</label>
+      <p-autoComplete size="51"
         formControlName="patientid"
         [suggestions]="filteredPatients!"
         (completeMethod)="filterPatients($event)"
         optionValue="id"
         optionLabel="fullname"/>
-
 
       <label for="dateRdv">Date de RDV :</label>
       <input id="dateRdv" type="date" formControlName="dateRdv" required>
